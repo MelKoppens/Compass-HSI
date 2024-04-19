@@ -1,0 +1,142 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* ===================================== */
+
+* {
+  /* border: 1px solid red;
+  box-sizing: border-box; */
+  /* border-radius: 4px; */
+}
+
+body {
+  /* display: flex; */
+  background-color: rgb(139, 105, 129);
+  margin: 0;
+  width: 100vw;
+  box-sizing: border-box;
+  /* height: 100vh; */
+}
+
+navbar {
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-around;
+}
+
+main {
+  margin: 60px;
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+}
+
+.compass {
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  position: relative;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  
+  /* the next 4 lines create the checkerboard test pattern */
+  background: linear-gradient(45deg, grey 25%, transparent 25%, transparent 75%, grey 75%, grey), 
+              linear-gradient(45deg, grey 25%, transparent 25%, transparent 75%, grey 75%, grey);
+  background-size: 200px 200px;
+  background-position: 0 0, 100px 100px;
+  background-color: yellow;
+  
+  /* uncomment the next two lines to see the compass */
+  background-image: url('./assets/compass-sketch2.svg');
+  background-size: cover;
+}
+
+.hsi{
+  position: absolute;
+  background-color: rgba(0, 128, 0, 0.5);
+  /* border-style: solid;
+  border-width: 1px;
+  border-color: red; */
+
+  color: white;
+
+  width: 30%;
+  height: 100%;
+  /* top: 50%; */
+  left: 35%;
+  transform: rotate(45deg);
+  /* transform: translate(-50%, -50%); */
+}
+
+.selector {
+  position: absolute;
+  background: linear-gradient(to bottom, red 25%, transparent 25%, transparent 75%, red 75%);
+  /* background-color: blue; */
+  /* border-style: solid;
+  border-width: 1px;
+  border-color: red; */
+
+  width: 5%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cdi {
+  position: absolute;
+  background-color: red;
+  /* border-style: solid;
+  border-width: 1px;
+  border-color: red; */
+
+  color: white;
+
+  width: 5%;
+  height: 48%;
+  top: 50%;
+  /* the next line controls the CDI deflection from full left(0%) to full righ(100%) */
+  left: 100%;
+  transform: translate(-50%, -50%);
+}
