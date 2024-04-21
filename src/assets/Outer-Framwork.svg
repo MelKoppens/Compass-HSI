@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="260px" height="250px" viewBox="0 0 260 250" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Outer Framwork</title>
+    <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Outer-Framwork">
+            <path d="M260,0 L260,250 L0,250 L0,0 L260,0 Z M130,30 C74.771525,30 30,74.771525 30,130 C30,185.228475 74.771525,230 130,230 C185.228475,230 230,185.228475 230,130 C230,74.771525 185.228475,30 130,30 Z" id="Outer-Case" fill="#503715"></path>
+            <g id="Outer-marks" transform="translate(17, 17)" fill="#FFFFFF">
+                <rect id="Rectangle" x="0" y="111.5" width="11" height="3"></rect>
+                <rect id="Rectangle" transform="translate(36.986, 36.986) rotate(45) translate(-36.986, -36.986)" x="31.486021" y="35.486021" width="11" height="3"></rect>
+                <path d="M113,1.44631834 L119.282935,18.5 L106.717065,18.5 L113,1.44631834 Z" id="Triangle" stroke="#505050" transform="translate(113, 9.5) scale(1, -1) translate(-113, -9.5)"></path>
+                <rect id="Rectangle" transform="translate(189.014, 36.986) rotate(135) translate(-189.014, -36.986)" x="183.513979" y="35.486021" width="11" height="3"></rect>
+                <rect id="Rectangle" transform="translate(220.5, 113) rotate(180) translate(-220.5, -113)" x="215" y="111.5" width="11" height="3"></rect>
+            </g>
+            <path d="M126,139 L126,138 L128,136 L128,131 L121,131 L121,129 L128,127.444 L128,124 L130,122 L132,124 L132,127.444 L139,129 L139,131 L132,131 L132,136 L134,138 L134,139 L126,139 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+        </g>
+    </g>
+</svg>
