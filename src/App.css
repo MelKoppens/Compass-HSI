@@ -1,3 +1,9 @@
+* {
+  /* border: 3px solid red;
+  box-sizing: border-box; */
+  /* border-radius: 4px; */
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -5,87 +11,44 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-/* ===================================== */
-
-* {
-  /* border: 3px solid red;
-  box-sizing: border-box; */
-  /* border-radius: 4px; */
-}
-
-body {
-  /* display: flex; */
-  background-color: rgb(68, 61, 66);
-  margin: 0;
-  width: 100vw;
-  box-sizing: border-box;
-  /* height: 100vh; */
-}
-
-navbar {
-  display: flex;
-  /* align-items: center; */
-  justify-content: space-around;
-}
-
-main {
+.framework {
+  position: relative;
   margin: 60px;
+  width: 520px;
+  height: 500px;
   display: flex;
-  /* align-items: center; */
+
   justify-content: center;
+  /* background-image: url('./assets/Outer-Framwork.svg');
+  background-size: cover; */
+}
+
+#outer-frame, .compass {
+  position: absolute;
+  width: 100%; /* double the width */
+  height: 100%; /* double the height */
+  top: 0;
+  left: 0;
+  border-radius: 8%;
 }
 
 .compass {
+  /* uncomment next 3 lines to set border */
   /* display: flex;
   align-items: center;
   justify-content: center; */
-  position: relative;
+
+  margin: 60px;
   width: 400px;
   height: 400px;
   border-radius: 50%;
   
   /* the next 4 lines create the checkerboard test pattern */
-  background: linear-gradient(45deg, grey 25%, transparent 25%, transparent 75%, grey 75%, grey), 
+  /* background: linear-gradient(45deg, grey 25%, transparent 25%, transparent 75%, grey 75%, grey), 
               linear-gradient(45deg, grey 25%, transparent 25%, transparent 75%, grey 75%, grey);
   background-size: 200px 200px;
   background-position: 0 0, 100px 100px;
-  background-color: yellow;
+  background-color: yellow; */
   
   /* uncomment the next two lines to see the compass */
   background-image: url('./assets/compass-sketch2.svg');
@@ -95,29 +58,30 @@ main {
 .hsi{
   position: absolute;
   background-color: rgba(0, 128, 0, 0.5);
+  
+  /* uncomment next 3 lines to set border */
   /* border-style: solid;
   border-width: 1px;
   border-color: red; */
 
+  /* next line only needed for testing */
   color: white;
 
   width: 30%;
   height: 100%;
-  /* top: 50%; */
   left: 35%;
   /* set HSI */
-  /* transform: rotate(30deg); */
-  /* transform: translate(-50%, -50%); */
+  transform: rotate(30deg);
 }
 
-.selector {
+.course {
   position: absolute;
   background: linear-gradient(to bottom, blue 25%, transparent 25%, transparent 75%, blue 75%);
-  /* background-color: blue; */
+  /* uncomment next 3 lines to set border */
   /* border-style: solid;
   border-width: 1px;
   border-color: red; */
-
+  
   width: 5%;
   height: 100%;
   top: 50%;
@@ -131,13 +95,31 @@ main {
   /* border-style: solid;
   border-width: 1px;
   border-color: red; */
-
-  color: white;
-
+  
   width: 5%;
   height: 48%;
   top: 50%;
   /* the next line controls the CDI deflection from full left(0%) to full righ(100%) */
-  left: 0%;
+  left: 25%;
   transform: translate(-50%, -50%);
+}
+
+.bug {
+  position: absolute;
+  background: linear-gradient(to bottom, transparent 1%, purple 1%, purple 5%, transparent 5%, transparent 100%);
+
+  /* uncomment next 3 lines to set border */
+  /* border-style: solid;
+  border-width: 1px;
+  border-color: red; */
+
+  /* next line only needed for testing */
+  color: white;
+
+  width: 8%;
+  height: 100%;
+  left: 46%;
+
+  /* background-image: url('./assets/bug.svg');
+  background-size: cover; */
 }
