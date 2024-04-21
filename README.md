@@ -1,2 +1,2 @@
 # Compass-HSI
-It is working
+Simple implementation of an HSI (Horizaontal situation Indicator).
