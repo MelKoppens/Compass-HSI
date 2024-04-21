@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import Controls from './components/Controls'
-import Main from './components/Main'
+import Frame from './components/Frame'
 import './App.css'
 
 // determines how fast states are updated, turns will be std rate regardless
@@ -11,8 +11,28 @@ let FPS = 10;
 function App() {
 
   const [headingState, setHeadingState] = useState(0);
-  const [obsState, setObsState] = useState(0);
+  const [obsState, setObsState] = useState(30);
+  const [bugState, setBugState] = useState(0);
+  const [turnState, setTurnState] = useState('right'); // 'left' , 'right' , 'level
 
+  // handle left turn
+  const handleTurnLeft = () => {
+    // Set turnState to left
+    setTurnState('left');
+  };
+
+  // handle right turn
+  const handleTurnLevel = () => {
+    // Set turnState to left
+    setTurnState('level');
+  };
+
+   // handle right turn
+   const handleTurnRight = () => {
+    // Set turnState to left
+    setTurnState('right');
+  };
+  
   // handle obs left input
   const handleObsLeft = () => {
     // Turn OBS 1 degree left
@@ -35,58 +55,72 @@ function App() {
     })
   };
   
+  // handle hdg bug left input
+  const handleBugLeft = () => {
+    // Turn BUG 1 degree left
+    let div = document.querySelector('.bug');
+    setBugState((prevBug) => {
+      const newBug = prevBug - 1;
+      div.style.transform = `rotate(${newBug}deg)`;
+      return newBug;
+    })
+  };
+
+  // handle hdg bug right input
+  const handleBugRight = () => {
+    // Turn BUG 1 degree right
+    let div = document.querySelector('.bug');
+    setBugState((prevBug) => {
+      const newBug = prevBug + 1;
+      div.style.transform = `rotate(${newBug}deg)`;
+      return newBug;
+    })
+  };
+
+  // module to test states
+  // useEffect(() => {
+  //   console.log('turnState: ' + turnState);
+  // }, [turnState]);
+
   // Game loop for updating opponent positions, collisions, etc.
   useEffect(() => {
-    let div = document.querySelector('.compass');
+    let comp = document.querySelector('.compass');
     const gameLoop = setInterval(() => {
       // Update opponent positions, handle collisions, etc.
 
       // Infinite std rate turn to the left 
       setHeadingState((prevHeading) => {
-        const newHeading = prevHeading + (3 / FPS); // 3 refers to std rate of turn (3deg per sec)
-        div.style.transform = `rotate(${newHeading}deg)`;
+        let newHeading;
+        if (turnState === 'left') {
+          newHeading = prevHeading + (3 / FPS); // 3 refers to std rate of turn (3deg per sec)
+        } else if (turnState === 'right') {
+          newHeading = prevHeading - (3 / FPS);
+        } else {
+          newHeading = prevHeading;
+        }
+        comp.style.transform = `rotate(${newHeading}deg)`;
         return newHeading;
       });
 
     }, 1000 / FPS);
     return () => clearInterval(gameLoop);
-  }, []);
-
-  // useEffect(() => {
-  //   console.log('headingState: ' + headingState);
-  // }, [headingState]);
-
+  }, [turnState]);
 
   // const [count, setCount] = useState(0)
 
   return (
-    <>
+    <div>
       <Controls 
+        handleTurnLeft = {handleTurnLeft}
+        handleTurnLevel = {handleTurnLevel}
+        handleTurnRight = {handleTurnRight}
         handleObsLeft = {handleObsLeft}
         handleObsRight = {handleObsRight}
+        handleBugLeft = {handleBugLeft}
+        handleBugRight = {handleBugRight}
       />
-      <Main />
-      {/* <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p> */}
-    </>
+      <Frame />
+    </div>
   )
 }
 
