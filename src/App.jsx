@@ -1,42 +1,71 @@
-import { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
-import Controls from './components/controls.jsx'
+import Controls from './components/Controls'
+import Main from './components/Main'
 import './App.css'
 
+// determines how fast states are updated, turns will be std rate regardless
+let FPS = 10;
+
 function App() {
-  // const [count, setCount] = useState(0)
 
-  // // Get the div element
-  // var div = document.querySelector('.compass');
+  const [headingState, setHeadingState] = useState(0);
+  const [obsState, setObsState] = useState(0);
 
-  // // Set initial rotation angle
-  // var angle = 0;
+  // handle obs left input
+  const handleObsLeft = () => {
+    // Turn OBS 1 degree left
+    let div = document.querySelector('.hsi');
+    setObsState((prevObs) => {
+      const newObs = prevObs - 1;
+      div.style.transform = `rotate(${newObs}deg)`;
+      return newObs;
+    })
+  };
+
+  // handle obs right input
+  const handleObsRight = () => {
+    // Turn OBS 1 degree right
+    let div = document.querySelector('.hsi');
+    setObsState((prevObs) => {
+      const newObs = prevObs + 1;
+      div.style.transform = `rotate(${newObs}deg)`;
+      return newObs;
+    })
+  };
   
-  // // Function to rotate the div
-  // function rotateDiv() {
-  //   // Increment the angle
-  //   angle += .3;
-  //   // Apply rotation to the div
-  //   div.style.transform = 'rotate(' + angle + 'deg)';
-  //   // Call the function again after a short delay
-  //   setTimeout(rotateDiv, 100);
-  // }
+  // Game loop for updating opponent positions, collisions, etc.
+  useEffect(() => {
+    let div = document.querySelector('.compass');
+    const gameLoop = setInterval(() => {
+      // Update opponent positions, handle collisions, etc.
 
-  // // Call the rotateDiv function to start the rotation
-  // rotateDiv();
+      // Infinite std rate turn to the left 
+      setHeadingState((prevHeading) => {
+        const newHeading = prevHeading + (3 / FPS); // 3 refers to std rate of turn (3deg per sec)
+        div.style.transform = `rotate(${newHeading}deg)`;
+        return newHeading;
+      });
+
+    }, 1000 / FPS);
+    return () => clearInterval(gameLoop);
+  }, []);
+
+  // useEffect(() => {
+  //   console.log('headingState: ' + headingState);
+  // }, [headingState]);
+
+
+  // const [count, setCount] = useState(0)
 
   return (
     <>
-      <Controls />
-      <main>
-        <div className="compass">
-          <div className="hsi">
-            <div className="selector">SEL</div>
-            <div className="cdi">CDI</div>
-          </div>
-        </div>
-      </main>
+      <Controls 
+        handleObsLeft = {handleObsLeft}
+        handleObsRight = {handleObsRight}
+      />
+      <Main />
       {/* <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />

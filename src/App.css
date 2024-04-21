@@ -44,14 +44,14 @@
 /* ===================================== */
 
 * {
-  /* border: 1px solid red;
+  /* border: 3px solid red;
   box-sizing: border-box; */
   /* border-radius: 4px; */
 }
 
 body {
   /* display: flex; */
-  background-color: rgb(139, 105, 129);
+  background-color: rgb(68, 61, 66);
   margin: 0;
   width: 100vw;
   box-sizing: border-box;
@@ -105,13 +105,14 @@ main {
   height: 100%;
   /* top: 50%; */
   left: 35%;
-  transform: rotate(45deg);
+  /* set HSI */
+  /* transform: rotate(30deg); */
   /* transform: translate(-50%, -50%); */
 }
 
 .selector {
   position: absolute;
-  background: linear-gradient(to bottom, red 25%, transparent 25%, transparent 75%, red 75%);
+  background: linear-gradient(to bottom, blue 25%, transparent 25%, transparent 75%, blue 75%);
   /* background-color: blue; */
   /* border-style: solid;
   border-width: 1px;
@@ -126,7 +127,7 @@ main {
 
 .cdi {
   position: absolute;
-  background-color: red;
+  background-color: blue;
   /* border-style: solid;
   border-width: 1px;
   border-color: red; */
@@ -137,6 +138,6 @@ main {
   height: 48%;
   top: 50%;
   /* the next line controls the CDI deflection from full left(0%) to full righ(100%) */
-  left: 100%;
+  left: 0%;
   transform: translate(-50%, -50%);
 }
