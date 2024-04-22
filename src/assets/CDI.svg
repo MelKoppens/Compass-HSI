@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="4px" height="202px" viewBox="0 0 4 202" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>CDI</title>
+    <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linejoin="round">
+        <g id="CDI" transform="translate(0.5, 1)" fill="#4FA43F" stroke="#505050" stroke-width="0.5">
+            <rect id="Rectangle" x="0" y="62" width="3" height="76"></rect>
+            <rect id="Rectangle" opacity="0" x="0" y="0" width="3" height="62"></rect>
+            <rect id="Rectangle" opacity="0" x="0" y="138" width="3" height="62"></rect>
+        </g>
+    </g>
+</svg>

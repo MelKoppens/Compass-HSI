@@ -7,7 +7,7 @@
             <g id="Outer-marks" transform="translate(17, 17)" fill="#FFFFFF">
                 <rect id="Rectangle" x="0" y="111.5" width="11" height="3"></rect>
                 <rect id="Rectangle" transform="translate(36.986, 36.986) rotate(45) translate(-36.986, -36.986)" x="31.486021" y="35.486021" width="11" height="3"></rect>
-                <path d="M113,1.44631834 L119.282935,18.5 L106.717065,18.5 L113,1.44631834 Z" id="Triangle" stroke="#505050" transform="translate(113, 9.5) scale(1, -1) translate(-113, -9.5)"></path>
+                <polygon id="Triangle" stroke="#505050" stroke-width="0.5" stroke-linejoin="round" transform="translate(113, 9.5) scale(1, -1) translate(-113, -9.5)" points="113 0 120 19 106 19"></polygon>
                 <rect id="Rectangle" transform="translate(189.014, 36.986) rotate(135) translate(-189.014, -36.986)" x="183.513979" y="35.486021" width="11" height="3"></rect>
                 <rect id="Rectangle" transform="translate(220.5, 113) rotate(180) translate(-220.5, -113)" x="215" y="111.5" width="11" height="3"></rect>
             </g>

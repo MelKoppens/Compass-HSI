@@ -5,8 +5,8 @@ import Controls from './components/Controls'
 import Frame from './components/Frame'
 import './App.css'
 
-// determines how fast states are updated, turns will be std rate regardless
-let FPS = 10;
+// determines how fast states are updated, turns will be std rate (3 deg/sec) regardless 
+let FPS = 200;
 
 function App() {
 
@@ -126,8 +126,8 @@ function App() {
 
 export default App
 
-
-// game engine example core:
+// ========================================================
+// core game engine example :
 
 // import React, { useState, useEffect } from 'react';
 

@@ -1,5 +1,5 @@
 * {
-  /* border: 3px solid red;
+  /* border: 1px solid red;
   box-sizing: border-box; */
   /* border-radius: 4px; */
 }
@@ -51,13 +51,13 @@
   background-color: yellow; */
   
   /* uncomment the next two lines to see the compass */
-  background-image: url('./assets/compass-sketch2.svg');
+  background-image: url('./assets/InnerFramework.svg');
   background-size: cover;
 }
 
 .hsi{
   position: absolute;
-  background-color: rgba(0, 128, 0, 0.5);
+  background-color: rgba(0, 128, 0, 0);
   
   /* uncomment next 3 lines to set border */
   /* border-style: solid;
@@ -67,46 +67,49 @@
   /* next line only needed for testing */
   color: white;
 
-  width: 30%;
+  width: 48%;
   height: 100%;
-  left: 35%;
+  left: 26%;
   /* set HSI */
   transform: rotate(30deg);
 }
 
 .course {
   position: absolute;
-  background: linear-gradient(to bottom, blue 25%, transparent 25%, transparent 75%, blue 75%);
   /* uncomment next 3 lines to set border */
   /* border-style: solid;
   border-width: 1px;
   border-color: red; */
-  
-  width: 5%;
+
+  color: white;
+
+  width: 92%;
   height: 100%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  left: 4%;
+
+  background-image: url('./assets/CRSselector.svg');
+  background-size: cover;
 }
 
 .cdi {
   position: absolute;
-  background-color: blue;
+  /* background-color: blue; */
   /* border-style: solid;
   border-width: 1px;
   border-color: red; */
   
-  width: 5%;
-  height: 48%;
-  top: 50%;
-  /* the next line controls the CDI deflection from full left(0%) to full righ(100%) */
-  left: 25%;
-  transform: translate(-50%, -50%);
+  width: 4%;
+  height: 100%;
+  /* full left -2%, center 48%, full right 98%, (y = 50x + 48) not sure why and need further investigation */
+  left: 73%;
+
+  background-image: url('./assets/CDI.svg');
+  background-size: cover;
 }
 
 .bug {
   position: absolute;
-  background: linear-gradient(to bottom, transparent 1%, purple 1%, purple 5%, transparent 5%, transparent 100%);
+  /* background: linear-gradient(to bottom, transparent 1%, purple 1%, purple 5%, transparent 5%, transparent 100%); */
 
   /* uncomment next 3 lines to set border */
   /* border-style: solid;
@@ -116,10 +119,10 @@
   /* next line only needed for testing */
   color: white;
 
-  width: 8%;
+  width: 10%;
   height: 100%;
-  left: 46%;
+  left: 45%;
 
-  /* background-image: url('./assets/bug.svg');
-  background-size: cover; */
+  background-image: url('./assets/HDGbug.svg');
+  background-size: cover;
 }
