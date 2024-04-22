@@ -57,7 +57,7 @@
 
 .hsi{
   position: absolute;
-  background-color: rgba(0, 128, 0, 0.5);
+  background-color: rgba(0, 128, 0, 0);
   
   /* uncomment next 3 lines to set border */
   /* border-style: solid;
