@@ -6,7 +6,7 @@ import Frame from './components/Frame'
 import './App.css'
 
 // determines how fast states are updated, turns will be std rate (3 deg/sec) regardless 
-let FPS = 20;
+let FPS = 200;
 
 function App() {
 

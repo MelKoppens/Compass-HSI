@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="88px" height="200px" viewBox="0 0 88 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>CRS selector</title>
+    <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="CRS-selector">
+            <circle id="Oval" stroke="#FFFFFF" cx="24" cy="100" r="3.5"></circle>
+            <circle id="Oval" stroke="#FFFFFF" cx="64" cy="100" r="3.5"></circle>
+            <circle id="Oval" stroke="#FFFFFF" cx="84" cy="100" r="3.5"></circle>
+            <circle id="Oval" stroke="#FFFFFF" cx="4" cy="100" r="3.5"></circle>
+            <path d="M44,9 L55,20 L45.5,20 L45.5,59 L42.5,59 L42.5,20 L33,20 L44,9 Z" id="Combined-Shape" stroke="#505050" stroke-width="0.5" fill="#4FA43F" stroke-linejoin="round"></path>
+            <rect id="Rectangle" fill="#4FA43F" opacity="0" x="42.5" y="0" width="3" height="9"></rect>
+            <rect id="Rectangle" fill="#4FA43F" opacity="0" x="42.5" y="189" width="3" height="11"></rect>
+            <rect id="Rectangle" stroke="#505050" stroke-width="0.5" fill="#4FA43F" stroke-linejoin="round" x="42.5" y="141" width="3" height="48"></rect>
+        </g>
+    </g>
+</svg>
