@@ -73,10 +73,10 @@ export default function Controls(props) {
       </button>
     </nav>
     <nav className='navbar'>
-      <button ref={obsLeftButton} className="obs-left">OBS left</button>
-      <button ref={obsRightButton} className="obs-right">OBS right</button>
-      <button ref={bugLeftButton} className="bug-left">BUG left</button>
-      <button ref={bugRightButton} className="bug-right">BUG right</button>
+      <button ref={obsLeftButton} onClick={handleObsLeft} className="obs-left">OBS left</button>
+      <button ref={obsRightButton} onClick={handleObsRight} className="obs-right">OBS right</button>
+      <button ref={bugLeftButton} onClick={handleBugLeft} className="bug-left">BUG left</button>
+      <button ref={bugRightButton} onClick={handleBugRight} className="bug-right">BUG right</button>
     </nav>
     <div>(click or hold)</div>
     </>

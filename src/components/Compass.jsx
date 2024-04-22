@@ -5,10 +5,10 @@ export default function Compass() {
     <main>
       <div className="compass">
         <div className="hsi">
-          <div className="course">CRS</div>
-          <div className="cdi">CDI</div>
+          <div className="course"></div>
+          <div className="cdi"></div>
         </div>
-        <div className="bug">BUG</div>
+        <div className="bug"></div>
       </div>
     </main>
   )

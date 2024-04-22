@@ -1,11 +1,10 @@
 // helper function that allows customizable behavior of the mousedown event over buttons.
 // it will repeatdly apply the action at a faster rate
 function createActionButtonHandler(actionButton, action) {
-  const DELAY = 500;
+  const DELAY = 300;
   const SPEED = 50;
-  const RAMP = 200;
+  const RAMP = 125;
 
-  let count = 0;
   let timeoutId;
   let intervalId;
   let actionInterval = DELAY; // Initial interval between actions
@@ -16,12 +15,21 @@ function createActionButtonHandler(actionButton, action) {
     action();
   }
 
-  // Function to handle button hold
+  // Function to handle button hold (this version prevents event bubbling)
   function handleButtonHold() {
-    performAction(); // Perform the action immediately
-    intervalId = setInterval(performAction, actionInterval); // Set interval for repeated actions
-    timeoutId = setTimeout(increaseActionSpeed, DELAY); // Increase action speed after 2 seconds
+    timeoutId = setTimeout(() => {
+      performAction(); // Perform the action immediately
+      intervalId = setInterval(performAction, actionInterval); // Set interval for repeated actions
+      timeoutId = setTimeout(increaseActionSpeed, DELAY); // Increase action speed after 2 seconds
+    }, DELAY);
   }
+
+  // // Function to handle button hold (problem with event bubbling)
+  // function handleButtonHold() {
+  //   performAction(); // Perform the action immediately
+  //   intervalId = setInterval(performAction, actionInterval); // Set interval for repeated actions
+  //   timeoutId = setTimeout(increaseActionSpeed, DELAY); // Increase action speed after 2 seconds
+  // }
 
   // Function to increase action speed
   function increaseActionSpeed() {
