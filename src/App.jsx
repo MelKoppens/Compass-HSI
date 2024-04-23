@@ -3,15 +3,17 @@ import React, { useState, useEffect } from 'react'
 // import viteLogo from '/vite.svg'
 import Controls from './components/Controls'
 import Frame from './components/Frame'
+import MovingMap from './components/MovingMap'
 import './App.css'
 
-// determines how fast states are updated, turns will be std rate (3 deg/sec) regardless 
-let FPS = 200;
+let FPS = 10; // determines how fast states are updated 
+let TURN_RATE=3; // determine the turn rate (3 deg/sec is standard in aviation)
 
 function App() {
 
   const [headingState, setHeadingState] = useState(0);
   const [obsState, setObsState] = useState(30);
+  const [cdiState, setCdiState] = useState(0);
   const [bugState, setBugState] = useState(0);
   const [turnState, setTurnState] = useState('right'); // 'left' , 'right' , 'level
 
@@ -54,6 +56,38 @@ function App() {
       return newObs;
     })
   };
+
+  // handle cdi left input
+  const handleCdiLeft = () => {
+    // Turn CDI 0.4 degree left, limit 10 deg (not possible directly in an AC)
+    let div = document.querySelector('.cdi');
+    setCdiState((prevCdi) => {
+      let newCdi;
+      if (prevCdi > -25) {
+        newCdi = prevCdi - 1;
+      } else {
+        newCdi = prevCdi;
+      }
+      div.style.left = `${newCdi}%`;
+      return newCdi;
+    })
+  };
+
+  // handle cdi right input
+  const handleCdiRight = () => {
+    // Turn CDI .4 degree right, limit 10 deg (not possible directly in an AC)
+    let div = document.querySelector('.cdi');
+    setCdiState((prevCdi) => {
+      let newCdi;
+      if (prevCdi < 25) {
+        newCdi = prevCdi + 1;
+      } else {
+        newCdi = prevCdi;
+      }
+      div.style.left = `${newCdi}%`;
+      return newCdi;
+    })
+  };
   
   // handle hdg bug left input
   const handleBugLeft = () => {
@@ -92,9 +126,9 @@ function App() {
       setHeadingState((prevHeading) => {
         let newHeading;
         if (turnState === 'left') {
-          newHeading = prevHeading + (3 / FPS); // 3 refers to std rate of turn (3deg per sec)
+          newHeading = prevHeading + (TURN_RATE / FPS); // 3 refers to std rate of turn (3deg per sec)
         } else if (turnState === 'right') {
-          newHeading = prevHeading - (3 / FPS);
+          newHeading = prevHeading - (TURN_RATE / FPS);
         } else {
           newHeading = prevHeading;
         }
@@ -116,10 +150,13 @@ function App() {
         handleTurnRight = {handleTurnRight}
         handleObsLeft = {handleObsLeft}
         handleObsRight = {handleObsRight}
+        handleCdiLeft = {handleCdiLeft}
+        handleCdiRight = {handleCdiRight}
         handleBugLeft = {handleBugLeft}
         handleBugRight = {handleBugRight}
       />
       <Frame />
+      <MovingMap />
     </div>
   )
 }

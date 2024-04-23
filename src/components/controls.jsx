@@ -10,6 +10,8 @@ export default function Controls(props) {
     handleTurnRight,
     handleObsLeft,
     handleObsRight,
+    handleCdiLeft,
+    handleCdiRight,
     handleBugLeft,
     handleBugRight
   } = props;
@@ -27,6 +29,22 @@ export default function Controls(props) {
   useEffect(() => {
     if (obsRightButton.current) {
       createActionButtonHandler(obsRightButton.current, handleObsRight);
+    }
+  }, []);
+
+  // fast button for the left CDI button
+  const cdiLeftButton = useRef(null);
+  useEffect(() => {
+    if (cdiLeftButton.current) {
+      createActionButtonHandler(cdiLeftButton.current, handleCdiLeft);
+    }
+  }, []);
+
+  // fast button for the right CDI button
+  const cdiRightButton = useRef(null);
+  useEffect(() => {
+    if (cdiRightButton.current) {
+      createActionButtonHandler(cdiRightButton.current, handleCdiRight);
     }
   }, []);
 
@@ -75,6 +93,8 @@ export default function Controls(props) {
     <nav className='navbar'>
       <button ref={obsLeftButton} onClick={handleObsLeft} className="obs-left">OBS left</button>
       <button ref={obsRightButton} onClick={handleObsRight} className="obs-right">OBS right</button>
+      <button ref={cdiLeftButton} onClick={handleCdiLeft} className="cdi-left">CDI left</button>
+      <button ref={cdiRightButton} onClick={handleCdiRight} className="cdi-right">CDI right</button>
       <button ref={bugLeftButton} onClick={handleBugLeft} className="bug-left">BUG left</button>
       <button ref={bugRightButton} onClick={handleBugRight} className="bug-right">BUG right</button>
     </nav>
