@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="4px" height="202px" viewBox="0 0 4 202" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="200px" height="202px" viewBox="0 0 200 202" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>CDI</title>
-    <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linejoin="round">
-        <g id="CDI" transform="translate(0.5, 1)" fill="#4FA43F" stroke="#505050" stroke-width="0.5">
-            <rect id="Rectangle" x="0" y="62" width="3" height="76"></rect>
-            <rect id="Rectangle" opacity="0" x="0" y="0" width="3" height="62"></rect>
-            <rect id="Rectangle" opacity="0" x="0" y="138" width="3" height="62"></rect>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="CDI" transform="translate(0, 1)">
+            <rect id="Rectangle" stroke="#505050" stroke-width="0.5" fill="#4FA43F" fill-rule="nonzero" x="98.5" y="61" width="3" height="76"></rect>
+            <rect id="Rectangle" stroke="#505050" stroke-width="0.5" fill="#4FA43F" fill-rule="nonzero" opacity="0" x="98.5" y="0" width="3" height="62"></rect>
+            <rect id="Rectangle" stroke="#979797" fill="#D8D8D8" opacity="0" x="0.5" y="98.5" width="97.5" height="3"></rect>
+            <rect id="Rectangle" stroke="#979797" fill="#D8D8D8" opacity="0" x="102" y="98.5" width="97.5" height="3"></rect>
+            <rect id="Rectangle" stroke="#505050" stroke-width="0.5" fill="#4FA43F" fill-rule="nonzero" opacity="0" x="98.5" y="138" width="3" height="62"></rect>
         </g>
     </g>
 </svg>

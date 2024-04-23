@@ -7,11 +7,11 @@
             <circle id="Oval" stroke="#FFFFFF" cx="120" cy="100" r="3.5"></circle>
             <circle id="Oval" stroke="#FFFFFF" cx="140" cy="100" r="3.5"></circle>
             <circle id="Oval" stroke="#FFFFFF" cx="60" cy="100" r="3.5"></circle>
-            <rect id="Rectangle" stroke="#979797" fill="#D8D8D8" opacity="0" x="0.5" y="98.5" width="55.5" height="3"></rect>
-            <rect id="Rectangle" stroke="#979797" fill="#D8D8D8" opacity="0" x="144" y="98.5" width="55.5" height="3"></rect>
+            <rect id="Rectangle" fill="#DB1E2E" x="0" y="98" width="56.5" height="4"></rect>
+            <rect id="Rectangle" fill="#DB1E2E" x="143.5" y="98" width="56.5" height="4"></rect>
             <polygon id="Combined-Shape" stroke="#505050" stroke-width="0.5" fill="#4FA43F" fill-rule="nonzero" stroke-linejoin="round" points="100 9 111 20 101.5 20 101.5 59 98.5 59 98.5 20 89 20"></polygon>
-            <rect id="Rectangle" fill="#4FA43F" fill-rule="nonzero" opacity="0" x="98.5" y="0" width="3" height="9"></rect>
-            <rect id="Rectangle" fill="#4FA43F" fill-rule="nonzero" opacity="0" x="98.5" y="189" width="3" height="11"></rect>
+            <rect id="Rectangle" fill="#DB1E2E" fill-rule="nonzero" x="98.5" y="0" width="3" height="9"></rect>
+            <rect id="Rectangle" fill="#DB1E2E" fill-rule="nonzero" x="98.5" y="189" width="3" height="11"></rect>
             <rect id="Rectangle" stroke="#505050" stroke-width="0.5" fill="#4FA43F" fill-rule="nonzero" stroke-linejoin="round" x="98.5" y="141" width="3" height="48"></rect>
         </g>
     </g>
