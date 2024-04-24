@@ -7,8 +7,8 @@ import MovingMap from './components/MovingMap'
 import './App.css'
 
 let FPS = 10; // determines how fast states are updated 
-let TURN_RATE=3; // determine the turn rate (3 deg/sec is standard in aviation)
-
+let TURN_RATE = 3; // determine the turn rate (3 deg/sec is standard in aviation)
+let SPEED = 120; // in KTS
 function App() {
 
   const [headingState, setHeadingState] = useState(0);
@@ -16,6 +16,8 @@ function App() {
   const [cdiState, setCdiState] = useState(0);
   const [bugState, setBugState] = useState(0);
   const [turnState, setTurnState] = useState('right'); // 'left' , 'right' , 'level
+  const [xPosState, setXPosState] = useState(256);
+  const [yPosState, setYPosState] = useState(260);
 
   // handle left turn
   const handleTurnLeft = () => {
@@ -122,7 +124,7 @@ function App() {
     const gameLoop = setInterval(() => {
       // Update opponent positions, handle collisions, etc.
 
-      // Infinite std rate turn to the left 
+      // Handle turns when turning 
       setHeadingState((prevHeading) => {
         let newHeading;
         if (turnState === 'left') {
@@ -134,6 +136,13 @@ function App() {
         }
         comp.style.transform = `rotate(${newHeading}deg)`;
         return newHeading;
+      });
+
+      // Handle forward movement
+      setYPosState((prevYPos) => {
+        let newYPos;
+        newYPos = prevYPos - SPEED / ( FPS * 36 );
+        return newYPos;
       });
 
     }, 1000 / FPS);
@@ -156,7 +165,10 @@ function App() {
         handleBugRight = {handleBugRight}
       />
       <Frame />
-      <MovingMap />
+      <MovingMap 
+        xPosState = {xPosState}
+        yPosState = {yPosState}
+      />
     </div>
   )
 }
