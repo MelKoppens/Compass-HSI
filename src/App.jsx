@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
 import Controls from './components/Controls'
 import Frame from './components/Frame'
 import MovingMap from './components/MovingMap'
 import './App.css'
 
 let FPS = 10; // determines how fast states are updated 
-let TURN_RATE=3; // determine the turn rate (3 deg/sec is standard in aviation)
+let TURN_RATE = 6; // determine the turn rate (3 deg/sec is standard in aviation)
+let SPEED = 240; // in KTS
 
 function App() {
 
@@ -16,6 +15,8 @@ function App() {
   const [cdiState, setCdiState] = useState(0);
   const [bugState, setBugState] = useState(0);
   const [turnState, setTurnState] = useState('right'); // 'left' , 'right' , 'level
+  const [xPosState, setXPosState] = useState(0);
+  const [yPosState, setYPosState] = useState(0);
 
   // handle left turn
   const handleTurnLeft = () => {
@@ -112,9 +113,11 @@ function App() {
   };
 
   // module to test states
-  // useEffect(() => {
-  //   console.log('turnState: ' + turnState);
-  // }, [turnState]);
+  useEffect(() => {
+    console.log('xPos: ' + xPosState);
+    console.log('yPos: ' + yPosState);
+    console.log('heading: ' + headingState);
+  }, [headingState, xPosState, yPosState]);
 
   // Game loop for updating opponent positions, collisions, etc.
   useEffect(() => {
@@ -122,18 +125,31 @@ function App() {
     const gameLoop = setInterval(() => {
       // Update opponent positions, handle collisions, etc.
 
-      // Infinite std rate turn to the left 
+      // Handle turns when turning 
       setHeadingState((prevHeading) => {
         let newHeading;
         if (turnState === 'left') {
-          newHeading = prevHeading + (TURN_RATE / FPS); // 3 refers to std rate of turn (3deg per sec)
+          newHeading = prevHeading - (TURN_RATE / FPS); // 3 refers to std rate of turn (3deg per sec)
         } else if (turnState === 'right') {
-          newHeading = prevHeading - (TURN_RATE / FPS);
+          newHeading = prevHeading + (TURN_RATE / FPS);
         } else {
           newHeading = prevHeading;
         }
-        comp.style.transform = `rotate(${newHeading}deg)`;
+        comp.style.transform = `rotate(${-newHeading}deg)`;
         return newHeading;
+      });
+
+      // Handle forward movement
+      setXPosState((prevXPos) => {
+        let newXPos;  
+        newXPos = prevXPos + Math.sin(headingState * Math.PI / 180) * SPEED / ( FPS * 36 );
+        return newXPos;
+      });
+      
+      setYPosState((prevYPos) => {
+        let newYPos;
+        newYPos = prevYPos - Math.cos(headingState * Math.PI / 180) * SPEED / ( FPS * 36 );
+        return newYPos;
       });
 
     }, 1000 / FPS);
@@ -156,51 +172,14 @@ function App() {
         handleBugRight = {handleBugRight}
       />
       <Frame />
-      <MovingMap />
+      <MovingMap 
+        xPosState = {xPosState}
+        yPosState = {yPosState}
+        headingState = {headingState}
+      />
     </div>
   )
 }
 
 export default App
 
-// ========================================================
-// core game engine example :
-
-// import React, { useState, useEffect } from 'react';
-
-// const RacingGame = () => {
-//   const [playerPosition, setPlayerPosition] = useState({ x: 0, y: 0 });
-//   const [opponents, setOpponents] = useState([]);
-//   const [gameState, setGameState] = useState('start'); // 'start', 'running', 'paused', 'finished'
-//   const [lap, setLap] = useState(1);
-//   const [lapTimes, setLapTimes] = useState([]);
-//   // Other state variables as needed
-
-//   // Handle user input
-//   const handleKeyPress = (event) => {
-//     // Update player position, speed, direction, etc. based on user input
-//   };
-
-//   // Update game state based on laps, time, etc.
-//   useEffect(() => {
-//     if (gameState === 'running') {
-//       // Update lap times, check for completion, etc.
-//     }
-//   }, [gameState]);
-
-//   // Game loop for updating opponent positions, collisions, etc.
-//   useEffect(() => {
-//     const gameLoop = setInterval(() => {
-//       // Update opponent positions, handle collisions, etc.
-//     }, 1000 / 60); // 60 FPS
-//     return () => clearInterval(gameLoop);
-//   }, []);
-
-//   return (
-//     <div>
-//       {/* Render game UI */}
-//     </div>
-//   );
-// };
-
-// export default RacingGame;
