@@ -9,11 +9,12 @@ let TURN_RATE = 3; // determine the turn rate (3 deg/sec is standard in aviation
 let SPEED = 120; // in KTS
 
 function App() {
-  const [aircraftState, setAircraftState] = useState({heading: 0, xPos: 0, yPos: 0});
-  const [obsState, setObsState] = useState(30);
+  const [aircraftState, setAircraftState] = useState({heading: 0, xPos: 0, yPos: 200});
+  const [instrumentState, setInstrumentState] = useState({bearing: 0, cdi: 0});
   const [cdiState, setCdiState] = useState(0);
+  const [obsState, setObsState] = useState(30);
   const [bugState, setBugState] = useState(0);
-  const [turnState, setTurnState] = useState('right'); // 'left' , 'right' , 'level
+  const [turnState, setTurnState] = useState('level'); // 'left' , 'right' , 'level
 
   // handle left turn
   const handleTurnLeft = () => {
@@ -122,7 +123,7 @@ function App() {
 
       // Handle aircraft movement
       setAircraftState((prevAircraftState) => {
-        // console.log(prevAircraftState);
+        console.log(prevAircraftState);
         let newHeading;
         if (turnState === 'left') {
           newHeading = prevAircraftState.heading - (TURN_RATE / FPS); // 3 refers to std rate of turn (3deg per sec)
@@ -144,6 +145,25 @@ function App() {
         return newAircraftState;
       });
 
+      // Handle instrument updates (except heading)
+      setInstrumentState(() => {
+        let div = document.querySelector('.bearing');
+        let newBearing;
+        if (aircraftState.yPos >= 0) {
+          newBearing = - Math.atan(aircraftState.xPos / aircraftState.yPos) * 180 / Math.PI;
+        } else {
+          newBearing = 180 - Math.atan(aircraftState.xPos / aircraftState.yPos) * 180 / Math.PI;
+        }
+        console.log('bearing :' + newBearing);
+        div.style.transform = `rotate(${newBearing}deg)`;
+        let newAircraftState = {
+          bearing: newBearing,
+          cdi: 0,
+        }
+
+        return newAircraftState;  
+      });
+
       // Handle forward movement
       // setXPosState((prevXPos) => {
       //   let newXPos;  
@@ -159,7 +179,7 @@ function App() {
 
     }, 1000 / FPS);
     return () => clearInterval(gameLoop);
-  }, [turnState]);
+  }, [aircraftState, instrumentState]);
 
   // const [count, setCount] = useState(0)
 
