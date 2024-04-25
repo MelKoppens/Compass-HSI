@@ -10,6 +10,9 @@
   padding: .5rem;
   text-align: center;
 }
+.heading-mode {
+  background-color: skyblue;
+}
 
 .framework {
   position: relative;
@@ -56,38 +59,53 @@
   height: 100%;
   left: 0;
   /* set HSI */
-  transform: rotate(30deg);
+  transform: rotate(0deg);
+  z-index: 2;
+  overflow: hidden;
 }
 
 .course {
   position: absolute;
-
+  
   width: 100%;
   height: 100%;
   left: 0%;
-
+  
+  
   background-image: url('./assets/CRSselector.svg');
   background-size: cover;
 }
 
 .cdi {
   position: absolute;
- 
+  
   width: 100%;
   height: 100%;
   left: 0%;
-
+  
   background-image: url('./assets/CDI.svg');
   background-size: cover;
 }
 
-.bearing{
+.tofrom {
+  position: absolute;
+  
+  width: 100%;
+  height: 100%;
+  left: 0%;
+  
+  background-image: url('./assets/TOFROMindicator.svg');
+  background-size: cover;
+}
+
+.bearing {
   position: absolute;
 
   width: 100%;
   height: 100%;
   left: 0;
   transform: rotate(0deg);
+  z-index: 1;
 
   background-image: url('./assets/bearingPointer.svg');
   background-size: cover;
