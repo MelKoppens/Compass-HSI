@@ -10,10 +10,12 @@ export default function Controls(props) {
     handleTurnRight,
     handleHeadingMode,
     handleObsLeft,
+    handleObs,
     handleObsRight,
     handleCdiLeft,
     handleCdiRight,
     handleBugLeft,
+    handleBug,
     handleBugRight
   } = props;
 
@@ -49,7 +51,7 @@ export default function Controls(props) {
     }
   }, []);
 
-  // fast button for the left BUG button
+  // fast button for the left HDG button
   const bugLeftButton = useRef(null);
   useEffect(() => {
     if (bugLeftButton.current) {
@@ -57,7 +59,7 @@ export default function Controls(props) {
     }
   }, []);
 
-   // fast button for the right BUG button
+   // fast button for the right HDG button
   const bugRightButton = useRef(null);
   useEffect(() => {
     if (bugRightButton.current) {
@@ -73,39 +75,45 @@ export default function Controls(props) {
   
   return (
     <>
-    <div>(click)</div>
-    <nav className='navbar'>
-      <button 
-        className="turn-left" 
-        onClick={handleTurnLeft}
-        >TURN left
-      </button>
-      <button 
-        className="turn-level" 
-        onClick={handleTurnLevel}
-        >LEVEL
-      </button>
-      <button 
-        className="turn-right" 
-        onClick={handleTurnRight}
-        >TURN right
-      </button>
+    <nav className='navbar1'>
+      <div className='stearbox'>
+        <button 
+          className="turn-left" 
+          onClick={handleTurnLeft}
+          >L
+        </button>-
+        <button 
+          className="turn-level" 
+          onClick={handleTurnLevel}
+          >LVL
+        </button>-
+        <button 
+          className="turn-right" 
+          onClick={handleTurnRight}
+          >R
+        </button>
+      </div>
+
+    </nav>
+    <nav className='navbar2'>
+      <div className='hdgbox'>
+        <button ref={obsLeftButton} onClick={handleObsLeft} className="obs-left">L</button>-
+        <button onClick={handleObs} className="obs">OBS</button>-
+        <button ref={obsRightButton} onClick={handleObsRight} className="obs-right">R</button>
+      </div>
+      {/* <button ref={cdiLeftButton} onClick={handleCdiLeft} className="cdi-left">CDI left</button> */}
+      {/* <button ref={cdiRightButton} onClick={handleCdiRight} className="cdi-right">CDI right</button> */}
       <button 
         className="heading-mode" 
         onClick={handleHeadingMode}
         >HM
       </button>
-
+      <div className='hdgbox'>
+        <button ref={bugLeftButton} onClick={handleBugLeft} className="bug-left">L</button>-
+        <button onClick={handleBug} className="hdgbug">HDG</button>-
+        <button ref={bugRightButton} onClick={handleBugRight} className="bug-right">R</button>
+      </div>
     </nav>
-    <nav className='navbar'>
-      <button ref={obsLeftButton} onClick={handleObsLeft} className="obs-left">OBS left</button>
-      <button ref={obsRightButton} onClick={handleObsRight} className="obs-right">OBS right</button>
-      {/* <button ref={cdiLeftButton} onClick={handleCdiLeft} className="cdi-left">CDI left</button> */}
-      {/* <button ref={cdiRightButton} onClick={handleCdiRight} className="cdi-right">CDI right</button> */}
-      <button ref={bugLeftButton} onClick={handleBugLeft} className="bug-left">BUG left</button>
-      <button ref={bugRightButton} onClick={handleBugRight} className="bug-right">BUG right</button>
-    </nav>
-    <div>(click or hold)</div>
     </>
   )
 }
