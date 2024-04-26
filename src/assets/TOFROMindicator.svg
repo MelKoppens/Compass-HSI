@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200px" height="200px" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>TOFROMindicator</title>
+    <g id="Compass-+-HSI" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="TOFROMindicator">
+            <polygon id="Triangle" stroke="#505050" stroke-width="0.5" fill="#4FA43F" stroke-linejoin="round" points="100 51 108 59 92 59"></polygon>
+            <rect id="Rectangle" stroke="#979797" fill="#D8D8D8" opacity="0" x="99.5" y="0.5" width="1" height="50"></rect>
+            <rect id="Rectangle" stroke="#979797" fill="#D8D8D8" opacity="0" x="99.5" y="59.5" width="1" height="140"></rect>
+            <rect id="Rectangle" stroke="#979797" fill="#D8D8D8" opacity="0" x="0.5" y="99.5" width="199" height="1"></rect>
+        </g>
+    </g>
+</svg>

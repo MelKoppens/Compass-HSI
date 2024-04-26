@@ -7,7 +7,9 @@ export default function Compass() {
         <div className="hsi">
           <div className="course"></div>
           <div className="cdi"></div>
+          <div className="tofrom"></div>
         </div>
+        <div className="bearing"></div>
         <div className="bug"></div>
       </div>
     </main>
