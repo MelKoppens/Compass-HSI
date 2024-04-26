@@ -4,7 +4,7 @@ import Frame from './components/Frame'
 import MovingMap from './components/MovingMap'
 import './App.css'
 
-let FPS = 5; // determines how fast states are updated 
+let FPS = 20; // determines how fast states are updated 
 let TURN_RATE = 3; // determine the turn rate (3 deg/sec is standard in aviation)
 let SPEED = 120; // in KTS
 
@@ -38,14 +38,23 @@ function App() {
   // handle heading mode
   const handleHeadingMode = () => {
     let divHeadingMode = document.querySelector('.heading-mode');
+    let divTurnLeft = document.querySelector('.turn-left');
+    let divTurnLevel = document.querySelector('.turn-level');
+    let divTurnRight = document.querySelector('.turn-right');
     // Toggle headingMode on/off
     if (headingModeState === 'off') {
       setHeadingModeState('on');
       divHeadingMode.style.backgroundColor = 'DodgerBlue';
+      divTurnLeft.style.backgroundColor = 'lightgrey';
+      divTurnLevel.style.backgroundColor = 'lightgrey';
+      divTurnRight.style.backgroundColor = 'lightgrey';
     } 
     if (headingModeState === 'on') {
       setHeadingModeState('off');
       divHeadingMode.style.backgroundColor = 'skyblue';
+      divTurnLeft.style.backgroundColor = 'skyblue';
+      divTurnLevel.style.backgroundColor = 'skyblue';
+      divTurnRight.style.backgroundColor = 'skyblue';
     } 
   };
   
@@ -55,6 +64,17 @@ function App() {
     let div = document.querySelector('.hsi');
     setObsState((prevObs) => {
       const newObs = prevObs - 1;
+      div.style.transform = `rotate(${newObs}deg)`;
+      return newObs;
+    })
+  };
+
+   // handle obs push
+   const handleObs = () => {
+    // Center the OBS TO the station
+    let div = document.querySelector('.hsi');
+    setObsState(() => {
+      const newObs = instrumentState.bearing;
       div.style.transform = `rotate(${newObs}deg)`;
       return newObs;
     })
@@ -114,6 +134,17 @@ function App() {
     })
   };
 
+  // handle hdg bug push
+  const handleBug = () => {
+    // Center the HDG bug on current heading
+    let div = document.querySelector('.bug');
+    setBugState(() => {
+      const newBug = aircraftState.heading;
+      div.style.transform = `rotate(${newBug}deg)`;
+      return newBug;
+    })
+  };
+
   // handle hdg bug right input
   const handleBugRight = () => {
     // Turn BUG 1 degree right
@@ -126,9 +157,9 @@ function App() {
   };
 
   // module to test states
-  useEffect(() => {
-    console.log(headingModeState);
-  }, [headingModeState]);
+  // useEffect(() => {
+  //   console.log(headingModeState);
+  // }, [headingModeState]);
 
   // Game loop for updating opponent positions, collisions, etc.
   useEffect(() => {
@@ -138,7 +169,7 @@ function App() {
 
       // Handle aircraft movement
       setAircraftState((prevAircraftState) => {
-        console.log(prevAircraftState);
+        // console.log(prevAircraftState);
         // if heading mode is on, do this
         if (headingModeState === 'on') {
           let newTurn = (bugState - aircraftState.heading ) % 360;
@@ -146,8 +177,8 @@ function App() {
           if (newTurn < -180) newTurn += 360;
           if (newTurn > 180) newTurn -= 360;
 
-          if (newTurn > TURN_RATE / FPS) setTurnState('right');
-          else if (newTurn < -TURN_RATE / FPS) setTurnState('left');
+          if (newTurn > 1.1 * TURN_RATE / FPS) setTurnState('right');
+          else if (newTurn < -1.1 * TURN_RATE / FPS) setTurnState('left');
           else setTurnState('level');
         }
         let newHeading;
@@ -237,10 +268,12 @@ function App() {
         handleTurnRight = {handleTurnRight}
         handleHeadingMode = {handleHeadingMode}
         handleObsLeft = {handleObsLeft}
+        handleObs = {handleObs}
         handleObsRight = {handleObsRight}
         handleCdiLeft = {handleCdiLeft}
         handleCdiRight = {handleCdiRight}
         handleBugLeft = {handleBugLeft}
+        handleBug = {handleBug}
         handleBugRight = {handleBugRight}
       />
       <Frame />
