@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>CenterButton </title>
+    <g id="CustomButtons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ComboButton" transform="translate(-19, 0)" fill="#87CEEB" stroke="#000000">
+            <circle id="CenterButton-" cx="39" cy="20" r="19.5"></circle>
+        </g>
+    </g>
+</svg>
