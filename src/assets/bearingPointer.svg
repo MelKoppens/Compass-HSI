@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200px" height="200px" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>bearingPointer</title>
+    <g id="Compass-+-HSI" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="bearingPointer">
+            <rect id="Rectangle" fill="#74FAFD" x="99.5" y="20" width="1" height="25"></rect>
+            <rect id="Rectangle" fill="#74FAFD" x="99.5" y="155" width="1" height="25"></rect>
+            <line x1="100" y1="25" x2="89" y2="36" id="Line" stroke="#74FAFD" stroke-linecap="square"></line>
+            <line x1="100" y1="25" x2="111" y2="36" id="Line" stroke="#74FAFD" stroke-linecap="square" stroke-linejoin="round"></line>
+            <rect id="Rectangle" stroke="#979797" fill="#D8D8D8" opacity="0" x="99.5" y="0.5" width="1" height="19"></rect>
+            <rect id="Rectangle" stroke="#979797" fill="#D8D8D8" opacity="0" x="99.5" y="180.5" width="1" height="19"></rect>
+            <rect id="Rectangle" stroke="#979797" fill="#D8D8D8" opacity="0" x="0.5" y="99.5" width="199" height="1"></rect>
+        </g>
+    </g>
+</svg>

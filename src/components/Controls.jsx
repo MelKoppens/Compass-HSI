@@ -8,6 +8,7 @@ export default function Controls(props) {
     handleTurnLeft,
     handleTurnLevel,
     handleTurnRight,
+    handleHeadingMode,
     handleObsLeft,
     handleObsRight,
     handleCdiLeft,
@@ -89,12 +90,18 @@ export default function Controls(props) {
         onClick={handleTurnRight}
         >TURN right
       </button>
+      <button 
+        className="heading-mode" 
+        onClick={handleHeadingMode}
+        >HM
+      </button>
+
     </nav>
     <nav className='navbar'>
       <button ref={obsLeftButton} onClick={handleObsLeft} className="obs-left">OBS left</button>
       <button ref={obsRightButton} onClick={handleObsRight} className="obs-right">OBS right</button>
-      <button ref={cdiLeftButton} onClick={handleCdiLeft} className="cdi-left">CDI left</button>
-      <button ref={cdiRightButton} onClick={handleCdiRight} className="cdi-right">CDI right</button>
+      {/* <button ref={cdiLeftButton} onClick={handleCdiLeft} className="cdi-left">CDI left</button> */}
+      {/* <button ref={cdiRightButton} onClick={handleCdiRight} className="cdi-right">CDI right</button> */}
       <button ref={bugLeftButton} onClick={handleBugLeft} className="bug-left">BUG left</button>
       <button ref={bugRightButton} onClick={handleBugRight} className="bug-right">BUG right</button>
     </nav>
