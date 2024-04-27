@@ -18,9 +18,6 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
-a:hover {
-  color: #535bf2;
-}
 
 body {
   margin: 0;
@@ -30,6 +27,10 @@ body {
   min-width: 720px;
   min-height: 100vh;
   background-color:aliceblue;
+  background-image: url('./assets/A320.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 h1 {
@@ -38,14 +39,14 @@ h1 {
 }
 
 button {
-  margin: 2px;
-  border-radius: 20px;
-  border: 1px solid transparent;
+  margin: 1px;
+  border-radius: 25px;
+  border: 2px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: skyblue;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -54,22 +55,8 @@ button:hover {
   border-color: #646cff;
 }
 
-/* button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-} */
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: skyblue;
-  }
+.no-hover:hover {
+  border-color: lightgray;
 }
 
 .navbar1 {
