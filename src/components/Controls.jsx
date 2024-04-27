@@ -78,28 +78,31 @@ export default function Controls(props) {
     <nav className='navbar1'>
       <div className='stearbox'>
         <button 
-          className="turn-left" 
+          className="turn"
+          style={{borderRadius: '25px 5px 5px 25px'}}
           onClick={handleTurnLeft}
-          >L
-        </button>-
+          >&lt;
+        </button>
         <button 
-          className="turn-level" 
+          className="turn"
+          style={{borderRadius: '5px'}} 
           onClick={handleTurnLevel}
           >LVL
-        </button>-
+        </button>
         <button 
-          className="turn-right" 
+          className="turn"
+          style={{borderRadius: '5px 25px 25px 5px'}}
           onClick={handleTurnRight}
-          >R
+          >&gt;
         </button>
       </div>
 
     </nav>
     <nav className='navbar2'>
       <div className='hdgbox'>
-        <button ref={obsLeftButton} onClick={handleObsLeft} className="obs-left">L</button>-
-        <button onClick={handleObs} className="obs">OBS</button>-
-        <button ref={obsRightButton} onClick={handleObsRight} className="obs-right">R</button>
+        <button ref={obsLeftButton} style={{borderRadius: '25px 5px 5px 25px'}} onClick={handleObsLeft} className="obs-left">&lt;</button>
+        <button onClick={handleObs} style={{borderRadius: '5px'}} className="obs">OBS</button>
+        <button ref={obsRightButton} style={{borderRadius: '5px 25px 25px 5px'}} onClick={handleObsRight} className="obs-right">&gt;</button>
       </div>
       {/* <button ref={cdiLeftButton} onClick={handleCdiLeft} className="cdi-left">CDI left</button> */}
       {/* <button ref={cdiRightButton} onClick={handleCdiRight} className="cdi-right">CDI right</button> */}
@@ -109,9 +112,9 @@ export default function Controls(props) {
         >HM
       </button>
       <div className='hdgbox'>
-        <button ref={bugLeftButton} onClick={handleBugLeft} className="bug-left">L</button>-
-        <button onClick={handleBug} className="hdgbug">HDG</button>-
-        <button ref={bugRightButton} onClick={handleBugRight} className="bug-right">R</button>
+        <button ref={bugLeftButton} style={{borderRadius: '25px 5px 5px 25px'}} onClick={handleBugLeft} className="bug-left">&lt;</button>
+        <button onClick={handleBug} style={{borderRadius: '5px'}}  className="hdgbug">HDG</button>
+        <button ref={bugRightButton} style={{borderRadius: '5px 25px 25px 5px'}} onClick={handleBugRight} className="bug-right">&gt;</button>
       </div>
     </nav>
     </>
