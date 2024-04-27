@@ -38,23 +38,25 @@ function App() {
   // handle heading mode
   const handleHeadingMode = () => {
     let divHeadingMode = document.querySelector('.heading-mode');
-    let divTurnLeft = document.querySelector('.turn-left');
-    let divTurnLevel = document.querySelector('.turn-level');
-    let divTurnRight = document.querySelector('.turn-right');
+    let buttons = document.querySelectorAll('.turn');
     // Toggle headingMode on/off
     if (headingModeState === 'off') {
       setHeadingModeState('on');
       divHeadingMode.style.backgroundColor = 'DodgerBlue';
-      divTurnLeft.style.backgroundColor = 'lightgrey';
-      divTurnLevel.style.backgroundColor = 'lightgrey';
-      divTurnRight.style.backgroundColor = 'lightgrey';
+      buttons.forEach(button => {
+        button.style.backgroundColor = 'lightgrey';
+        // turn off hover behavior
+        button.classList.add('no-hover');
+      });
     } 
     if (headingModeState === 'on') {
       setHeadingModeState('off');
       divHeadingMode.style.backgroundColor = 'skyblue';
-      divTurnLeft.style.backgroundColor = 'skyblue';
-      divTurnLevel.style.backgroundColor = 'skyblue';
-      divTurnRight.style.backgroundColor = 'skyblue';
+      buttons.forEach(button => {
+        button.style.backgroundColor = 'skyblue';
+        // turn on hover behavior
+        button.classList.remove('no-hover');
+      });
     } 
   };
   
