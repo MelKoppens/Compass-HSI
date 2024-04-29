@@ -23,28 +23,27 @@
   width: 520px;
   height: 500px;
   display: flex;
-
   justify-content: center;
+
+
 }
 
-#outer-frame {
+.compass-frame {
+  position: absolute;
+  width: 520px;
+  height: 500px;
   box-sizing: border-box;
   border: 2px solid black;
   border-radius: 8%;
-}
-
-#outer-frame, .compass {
-  position: absolute;
-  width: 100%; /* double the width */
-  height: 100%; /* double the height */
-  top: 0;
-  left: 0;
+  
+  background-image: url('src/assets/OuterFramwork.svg');
+  background-size: cover;
 }
 
 .compass {
-  margin-left: 60px;
-  margin-right: 30px;
-  margin-top: 60px;
+  position: absolute;
+  top: 60px;
+  left: 60px;
   width: 400px;
   height: 400px;
   border-radius: 50%;
