@@ -10,7 +10,7 @@ let SPEED = 120; // in KTS
 
 function App() {
   const [aircraftState, setAircraftState] = useState({heading: 0, xPos: 0, yPos: 200}); // [0,360], x, y
-  const [instrumentState, setInstrumentState] = useState({bearing: 0, cdi: 0, toFrom: 'to'}); // [0,360], [-10,10], 'to', 'from'
+  const [instrumentState, setInstrumentState] = useState({bearing: 0, cdi: 0, toFrom: 0}); // [0,360], [-10,10], 'to', 'from'
   const [cdiState, setCdiState] = useState(0);
   const [obsState, setObsState] = useState(0);
   const [bugState, setBugState] = useState(0);
@@ -65,7 +65,8 @@ function App() {
     // Turn OBS 1 degree left
     let div = document.querySelector('.hsi');
     setObsState((prevObs) => {
-      const newObs = prevObs - 1;
+      let newObs = prevObs - 1;
+      if (newObs < 0) newObs += 360;
       div.style.transform = `rotate(${newObs}deg)`;
       return newObs;
     })
@@ -76,7 +77,8 @@ function App() {
     // Center the OBS TO the station
     let div = document.querySelector('.hsi');
     setObsState(() => {
-      const newObs = instrumentState.bearing;
+      let newObs = Math.round(instrumentState.bearing);
+      if (newObs === 360) newObs = 0;
       div.style.transform = `rotate(${newObs}deg)`;
       return newObs;
     })
@@ -87,7 +89,8 @@ function App() {
     // Turn OBS 1 degree right
     let div = document.querySelector('.hsi');
     setObsState((prevObs) => {
-      const newObs = prevObs + 1;
+      let newObs = prevObs + 1;
+      if (newObs >= 360) newObs -= 360;
       div.style.transform = `rotate(${newObs}deg)`;
       return newObs;
     })
@@ -130,7 +133,8 @@ function App() {
     // Turn BUG 1 degree left
     let div = document.querySelector('.bug');
     setBugState((prevBug) => {
-      const newBug = prevBug - 1;
+      let newBug = prevBug - 1;
+      if (newBug < 0) newBug += 360;
       div.style.transform = `rotate(${newBug}deg)`;
       return newBug;
     })
@@ -141,7 +145,7 @@ function App() {
     // Center the HDG bug on current heading
     let div = document.querySelector('.bug');
     setBugState(() => {
-      const newBug = aircraftState.heading;
+      const newBug = Math.round(aircraftState.heading);
       div.style.transform = `rotate(${newBug}deg)`;
       return newBug;
     })
@@ -152,44 +156,52 @@ function App() {
     // Turn BUG 1 degree right
     let div = document.querySelector('.bug');
     setBugState((prevBug) => {
-      const newBug = prevBug + 1;
+      let newBug = prevBug + 1;
+      if (newBug >= 360) newBug -= 360;
       div.style.transform = `rotate(${newBug}deg)`;
       return newBug;
     })
   };
 
-  // module to test states
+  // // module to test states
   // useEffect(() => {
-  //   console.log(headingModeState);
-  // }, [headingModeState]);
+  //   console.log(bugState);
+  // }, [bugState]);
 
-  // Game loop for updating opponent positions, collisions, etc.
+  // Movement loop
   useEffect(() => {
     let comp = document.querySelector('.compass');
     const gameLoop = setInterval(() => {
-      // Update opponent positions, handle collisions, etc.
 
       // Handle aircraft movement
       setAircraftState((prevAircraftState) => {
+
         // console.log(prevAircraftState);
+        let newHeading;
+        let newTurn = (bugState - aircraftState.heading ) % 360;
+        // turn it into a value between -180 and 180
+        if (newTurn < -180) newTurn += 360;
+        if (newTurn > 180) newTurn -= 360;
+
         // if heading mode is on, do this
         if (headingModeState === 'on') {
-          let newTurn = (bugState - aircraftState.heading ) % 360;
-          // turn it into a value between -180 and 180
-          if (newTurn < -180) newTurn += 360;
-          if (newTurn > 180) newTurn -= 360;
-
+          // this solution still needs work
           if (newTurn > 1.1 * TURN_RATE / FPS) setTurnState('right');
           else if (newTurn < -1.1 * TURN_RATE / FPS) setTurnState('left');
-          else setTurnState('level');
+          else {
+            // newHeading = bugState;
+            setTurnState('level');
+          } 
         }
-        let newHeading;
         if (turnState === 'left') {
           newHeading = prevAircraftState.heading - (TURN_RATE / FPS); // 3 refers to std rate of turn (3deg per sec)
+          if (newHeading < 0) newHeading += 360;
         } else if (turnState === 'right') {
           newHeading = prevAircraftState.heading + (TURN_RATE / FPS);
+          if (newHeading >= 360) newHeading -= 360;
         } else {
           newHeading = prevAircraftState.heading;
+          if (headingModeState === 'on' && Math.abs(newTurn) <= TURN_RATE / FPS) newHeading = bugState;
         }
         comp.style.transform = `rotate(${-newHeading}deg)`;
 
@@ -206,12 +218,12 @@ function App() {
 
       // Handle instrument updates (except heading)
       setInstrumentState(() => {
-        
         // update bearing
         let divBearing = document.querySelector('.bearing');
         let newBearing;
         if (aircraftState.yPos > 0) {
           newBearing = - Math.atan(aircraftState.xPos / aircraftState.yPos) * 180 / Math.PI;
+          if (newBearing < 0) newBearing += 360;
         } else {
           newBearing = 180 - Math.atan(aircraftState.xPos / aircraftState.yPos) * 180 / Math.PI;
         };
@@ -232,35 +244,26 @@ function App() {
 
         // update TO/FROM
         let divToFrom = document.querySelector('.tofrom');
-        let newToFrom;
+        let newToFrom = 0; // 'TO' indication
         // take inproduct of obsState and the position of the aircraft relative to the VOR
         // (or you could compare obsState with bearing as an alternative)
         let inProduct = Math.sin(obsState * Math.PI / 180) * aircraftState.xPos - // (minus) because y-axis is reversed
                         Math.cos(obsState * Math.PI / 180) * aircraftState.yPos;
-        if (inProduct <= 0 ) {
-          // when the inProduct is negative, display TO
-          divToFrom.style.transform = `rotate(0deg)`;
-          newToFrom = 'to';
-        } else {
-          // when the inProduct is positive, display FROM
-          divToFrom.style.transform = `rotate(180deg)`;
-          newToFrom = 'from';
-        }
+        if (inProduct > 0 ) newToFrom = 180; // 'FROM' indication
+        divToFrom.style.transform = `rotate(${newToFrom}deg)`;
 
-        let newAircraftState = {
+        let newInstrumentState = {
           bearing: newBearing,
           cdi: newCdi,
           toFrom: newToFrom,
         }
 
-        return newAircraftState;  
+        return newInstrumentState;  
       });
 
     }, 1000 / FPS);
     return () => clearInterval(gameLoop);
   }, [aircraftState, instrumentState]);
-
-  // const [count, setCount] = useState(0)
 
   return (
     <div>
@@ -278,9 +281,15 @@ function App() {
         handleBug = {handleBug}
         handleBugRight = {handleBugRight}
       />
-      <Frame />
+      <Frame 
+        aircraftState = {aircraftState}
+        bugState = {bugState}
+        obsState = {obsState}
+      />
       <MovingMap 
         aircraftState = {aircraftState}
+        instrumentState = {instrumentState}
+        obsState = {obsState}
       />
     </div>
   )
