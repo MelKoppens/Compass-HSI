@@ -1,6 +1,7 @@
 import React from 'react'
 import Map from  './Map'
 import Radial from  './Radial'
+import MiniPlane from './MiniPlane';
 export default function MovingMap(props) {
   const { aircraftState , instrumentState, obsState } = props;
 
@@ -14,7 +15,7 @@ export default function MovingMap(props) {
         instrumentState = {instrumentState}
         obsState = {obsState}
       />
-      {/* <img src="src/assets/miniplane.svg" alt="Miniplane" className="miniplane" width = "40"/> */}
+      <MiniPlane className="mini" />
     </main>
   
   )
