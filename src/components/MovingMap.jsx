@@ -14,7 +14,7 @@ export default function MovingMap(props) {
         instrumentState = {instrumentState}
         obsState = {obsState}
       />
-      <img src="src/assets/miniplane.svg" alt="Miniplane" className="miniplane" width = "40"/>
+      {/* <img src="src/assets/miniplane.svg" alt="Miniplane" className="miniplane" width = "40"/> */}
     </main>
   
   )
