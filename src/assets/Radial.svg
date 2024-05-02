@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1100px" height="1102px" viewBox="0 0 1100 1102" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Radial</title>
+    <g id="TestMap" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Radial" transform="translate(0, 1)" stroke="#979797">
+            <rect id="Rectangle" fill="#7CD770" x="548" y="0" width="4" height="550"></rect>
+            <rect id="Rectangle" fill="#4FA43F" x="548" y="550" width="4" height="550"></rect>
+            <rect id="Rectangle" fill="#979797" opacity="0" transform="translate(825, 550) rotate(90) translate(-825, -550)" x="823.5" y="275.5" width="3" height="549"></rect>
+            <rect id="Rectangle" fill="#979797" opacity="0" transform="translate(275, 550) rotate(90) translate(-275, -550)" x="273.5" y="275.5" width="3" height="549"></rect>
+        </g>
+    </g>
+</svg>
