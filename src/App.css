@@ -59,7 +59,7 @@
   border-radius: 8%;
   z-index: 2;
 
-  background-image: url('src/assets/OuterFramwork.svg');
+  background-image: url('./assets/OuterFramework.svg');
   background-size: cover;
 }
 
