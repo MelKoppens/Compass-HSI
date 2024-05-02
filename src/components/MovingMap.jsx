@@ -16,7 +16,6 @@ export default function MovingMap(props) {
         obsState = {obsState}
       />
       <MiniPlane className="mini" />
-      {/* <img src="src/assets/miniplane.svg" alt="Miniplane" className="miniplane" width = "40"/> */}
     </main>
   
   )
