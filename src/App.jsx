@@ -267,7 +267,7 @@ function App() {
 
   return (
     <div>
-      <Controls 
+      {/* <Controls 
         handleTurnLeft = {handleTurnLeft}
         handleTurnLevel = {handleTurnLevel}
         handleTurnRight = {handleTurnRight}
@@ -280,17 +280,17 @@ function App() {
         handleBugLeft = {handleBugLeft}
         handleBug = {handleBug}
         handleBugRight = {handleBugRight}
-      />
-      <Frame 
+      /> */}
+      {/* <Frame 
         aircraftState = {aircraftState}
         bugState = {bugState}
         obsState = {obsState}
-      />
-      <MovingMap 
+      /> */}
+      {/* <MovingMap 
         aircraftState = {aircraftState}
         instrumentState = {instrumentState}
         obsState = {obsState}
-      />
+      /> */}
     </div>
   )
 }
