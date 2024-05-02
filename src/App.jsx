@@ -283,6 +283,7 @@ function App() {
       />
       <Frame 
         aircraftState = {aircraftState}
+        instrumentState = {instrumentState}
         bugState = {bugState}
         obsState = {obsState}
       />
