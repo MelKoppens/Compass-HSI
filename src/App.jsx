@@ -42,7 +42,7 @@ function App() {
     // Toggle headingMode on/off
     if (headingModeState === 'off') {
       setHeadingModeState('on');
-      divHeadingMode.style.backgroundColor = 'DodgerBlue';
+      divHeadingMode.style.backgroundColor = '#3F8320';
       buttons.forEach(button => {
         button.style.backgroundColor = 'lightgrey';
         // turn off hover behavior
@@ -51,9 +51,9 @@ function App() {
     } 
     if (headingModeState === 'on') {
       setHeadingModeState('off');
-      divHeadingMode.style.backgroundColor = 'skyblue';
+      divHeadingMode.style.backgroundColor = '#4FA43F';
       buttons.forEach(button => {
-        button.style.backgroundColor = 'skyblue';
+        button.style.backgroundColor = '#4FA43F';
         // turn on hover behavior
         button.classList.remove('no-hover');
       });
