@@ -28,6 +28,7 @@
   font-style: italic;
 }
 
+
 #root {
   margin: 0 auto;
   padding: .5rem;
@@ -36,18 +37,16 @@
 
 .wrapper {
   position: relative;
-  text-align: center; 
-  width: 100vw;
+  text-align: center;
+  min-width: 520px;
 }
 
 @keyframes moveTopToBottom {
   0% {
     top: -100px;
-    /* opacity: 0; */
   }
   100% {
     top: 100vh;
-    /* opacity: 1; */
   }
 }
 
@@ -59,10 +58,10 @@
   width: 115px;
   height: 73px;
   
-  opacity: 1;
   background-image: url('./assets/Cloud.svg');
   background-size: cover;
-  /* background-color: black; */
+  opacity: 1;
+
   animation: moveTopToBottom 30s linear infinite;
   animation-delay: 20s;
  
@@ -77,11 +76,12 @@
   width: 115px;
   height: 73px;
   
-  opacity: .5;
   background-image: url('./assets/Cloud.svg');
   background-size: cover;
-  /* background-color: black; */
+  opacity: .5;
+
   animation: moveTopToBottom 60s linear infinite;
+  animation-delay: 0s;
   
   z-index: -1;
 }
@@ -93,11 +93,11 @@
   transform: translateX(-50%);
   width: 115px;
   height: 73px;
-  opacity: .8;
-  /* transform: scaleX(-1); */
+  
   background-image: url('./assets/Cloud.svg');
   background-size: cover;
-  /* background-color: black; */
+  opacity: .8;
+
   animation: moveTopToBottom 40s linear infinite;
   animation-delay: 10s;
   z-index: -1;
@@ -111,10 +111,10 @@
   width: 115px;
   height: 73px;
   
-  opacity: 1;
   background-image: url('./assets/Cloud.svg');
   background-size: cover;
-  /* background-color: black; */
+  opacity: 1;
+
   animation: moveTopToBottom 30s linear infinite;
   animation-delay: 5s;
  
@@ -129,10 +129,10 @@
   width: 115px;
   height: 73px;
   
-  opacity: .5;
   background-image: url('./assets/Cloud.svg');
   background-size: cover;
-  /* background-color: black; */
+  opacity: .5;
+ 
   animation: moveTopToBottom 60s linear infinite;
   animation-delay: 15s;
  
@@ -146,31 +146,15 @@
   transform: translateX(-50%);
   width: 115px;
   height: 73px;
-  opacity: .8;
-  /* transform: scaleX(-1); */
+  
   background-image: url('./assets/Cloud.svg');
   background-size: cover;
-  /* background-color: black; */
+  opacity: .8;
+
   animation: moveTopToBottom 40s linear infinite;
   animation-delay: 25s;
+
   z-index: -1;
-}
-
-/* .clouds {
-  position: absolute;
-  top: 100px;
-  left: 200px;
-  background-color: black;
-} */
-
-.app {
-  /* position: absolute; */
-  /* top: 0px; */
-  /* text-align: center; */
-}
-
-.heading-mode {
-  background-color: skyblue;
 }
 
 .framework {
@@ -217,9 +201,11 @@
   left: 220px;
   width: 80px;
   height: 40px;
+
   background-color: black;
   border: 1px solid white;
   border-radius: 3px;
+
   font-family: "B612", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -234,10 +220,10 @@
   left: 55px;
   width: 105px;
   height: 30px;
-  /* padding: 1px; */
+
   background-color: black;
-  /* border: 1px solid white; */
   border-radius: 3px;
+
   font-family: "B612", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -257,10 +243,10 @@
   left: 360px;
   width: 105px;
   height: 30px;
-  /* padding: 1px; */
+ 
   background-color: black;
-  /* border: 1px solid white; */
   border-radius: 3px;
+
   font-family: "B612", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -281,9 +267,7 @@
   width: 180px;
   height: 60px;
   text-align: left;
-  /* padding: 1px; */
-  /* background-color: black; */
-  /* border: 1px solid white; */
+
   border-radius: 3px;
   font-family: "B612", sans-serif;
   font-weight: 400;
@@ -313,7 +297,7 @@
   width: 100%;
   height: 100%;
   left: 0;
-  /* set HSI */
+
   transform: rotate(0deg);
   z-index: 2;
   overflow: hidden;
@@ -325,7 +309,6 @@
   width: 100%;
   height: 100%;
   left: 0%;
-  
   
   background-image: url('./assets/CRSselector.svg');
   background-size: cover;
