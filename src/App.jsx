@@ -10,7 +10,7 @@ let SPEED = 120; // in KTS
 
 function App() {
   const [aircraftState, setAircraftState] = useState({heading: 0, xPos: 0, yPos: 200}); // [0,360], x, y
-  const [instrumentState, setInstrumentState] = useState({bearing: 0, cdi: 0, toFrom: 0}); // [0,360], [-10,10], 'to', 'from'
+  const [instrumentState, setInstrumentState] = useState({bearing: 0, cdi: 0, toFrom: 0}); // [0,360], [-10,10], [0, 180], ['left', 'right']
   const [cdiState, setCdiState] = useState(0);
   const [obsState, setObsState] = useState(0);
   const [bugState, setBugState] = useState(0);
@@ -102,12 +102,12 @@ function App() {
     let div = document.querySelector('.cdi');
     setCdiState((prevCdi) => {
       let newCdi;
-      if (prevCdi > -25) {
+      if (prevCdi > -10) {
         newCdi = prevCdi - 1;
       } else {
         newCdi = prevCdi;
       }
-      div.style.left = `${newCdi}%`;
+      div.style.left = `${2.5 * newCdi}%`;
       return newCdi;
     })
   };
@@ -118,12 +118,12 @@ function App() {
     let div = document.querySelector('.cdi');
     setCdiState((prevCdi) => {
       let newCdi;
-      if (prevCdi < 25) {
+      if (prevCdi < 10) {
         newCdi = prevCdi + 1;
       } else {
         newCdi = prevCdi;
       }
-      div.style.left = `${newCdi}%`;
+      div.style.left = `${2.5 * newCdi}%`;
       return newCdi;
     })
   };
@@ -193,6 +193,7 @@ function App() {
             setTurnState('level');
           } 
         }
+        // update the heading
         if (turnState === 'left') {
           newHeading = prevAircraftState.heading - (TURN_RATE / FPS); // 3 refers to std rate of turn (3deg per sec)
           if (newHeading < 0) newHeading += 360;
@@ -205,9 +206,11 @@ function App() {
         }
         comp.style.transform = `rotate(${-newHeading}deg)`;
 
+        // update the position based on 100px = 1NM
         let newXPos = prevAircraftState.xPos + Math.sin(newHeading * Math.PI / 180) * SPEED / ( FPS * 36 );
         let newYPos = prevAircraftState.yPos - Math.cos(newHeading * Math.PI / 180) * SPEED / ( FPS * 36 );
 
+        // return updated aircraft state
         let newAircraftState = {
           heading: newHeading,
           xPos: newXPos,
@@ -252,12 +255,17 @@ function App() {
         if (inProduct > 0 ) newToFrom = 180; // 'FROM' indication
         divToFrom.style.transform = `rotate(${newToFrom}deg)`;
 
+        // update VOR1 text position based on CDI position
+        let divVor1Txt = document.querySelector('.vor1txt');
+        if (instrumentState.cdi < -1.5) divVor1Txt.style.left = '210px';
+        if (instrumentState.cdi > 1.5) divVor1Txt.style.left = '110px';
+
+        // return updated instrument state
         let newInstrumentState = {
           bearing: newBearing,
           cdi: newCdi,
           toFrom: newToFrom,
         }
-
         return newInstrumentState;  
       });
 
