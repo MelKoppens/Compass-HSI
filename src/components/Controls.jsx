@@ -67,56 +67,50 @@ export default function Controls(props) {
     }
   }, []);
   
-
-  // Usage:
-  // const actionButton = document.getElementById('obsLeft');
-  // console.log(actionButton + "*****");
-  // const performAction = createActionButtonHandler(actionButton);
-  
   return (
-    <>
-    <nav className='navbar1'>
-      <div className='stearbox'>
+    <nav>
+      <nav className='navbar1'>
+        <div className='stearbox'>
+          <button 
+            className="turn"
+            style={{borderRadius: '25px 5px 5px 25px'}}
+            onClick={handleTurnLeft}
+            >&lt;
+          </button>
+          <button 
+            className="turn"
+            style={{borderRadius: '5px'}} 
+            onClick={handleTurnLevel}
+            >LVL
+          </button>
+          <button 
+            className="turn"
+            style={{borderRadius: '5px 25px 25px 5px'}}
+            onClick={handleTurnRight}
+            >&gt;
+          </button>
+        </div>
+  
+      </nav>
+      <nav className='navbar2'>
+        <div className='hdgbox'>
+          <button ref={obsLeftButton} style={{borderRadius: '25px 5px 5px 25px'}} onClick={handleObsLeft} className="obs-left">&lt;</button>
+          <button onClick={handleObs} style={{borderRadius: '5px'}} className="obs">OBS</button>
+          <button ref={obsRightButton} style={{borderRadius: '5px 25px 25px 5px'}} onClick={handleObsRight} className="obs-right">&gt;</button>
+        </div>
+        {/* <button ref={cdiLeftButton} onClick={handleCdiLeft} className="cdi-left">CDI left</button> */}
+        {/* <button ref={cdiRightButton} onClick={handleCdiRight} className="cdi-right">CDI right</button> */}
         <button 
-          className="turn"
-          style={{borderRadius: '25px 5px 5px 25px'}}
-          onClick={handleTurnLeft}
-          >&lt;
+          className="heading-mode" 
+          onClick={handleHeadingMode}
+          >HM
         </button>
-        <button 
-          className="turn"
-          style={{borderRadius: '5px'}} 
-          onClick={handleTurnLevel}
-          >LVL
-        </button>
-        <button 
-          className="turn"
-          style={{borderRadius: '5px 25px 25px 5px'}}
-          onClick={handleTurnRight}
-          >&gt;
-        </button>
-      </div>
-
+        <div className='hdgbox'>
+          <button ref={bugLeftButton} style={{borderRadius: '25px 5px 5px 25px'}} onClick={handleBugLeft} className="bug-left">&lt;</button>
+          <button onClick={handleBug} style={{borderRadius: '5px'}}  className="hdgbug">HDG</button>
+          <button ref={bugRightButton} style={{borderRadius: '5px 25px 25px 5px'}} onClick={handleBugRight} className="bug-right">&gt;</button>
+        </div>
+      </nav>
     </nav>
-    <nav className='navbar2'>
-      <div className='hdgbox'>
-        <button ref={obsLeftButton} style={{borderRadius: '25px 5px 5px 25px'}} onClick={handleObsLeft} className="obs-left">&lt;</button>
-        <button onClick={handleObs} style={{borderRadius: '5px'}} className="obs">OBS</button>
-        <button ref={obsRightButton} style={{borderRadius: '5px 25px 25px 5px'}} onClick={handleObsRight} className="obs-right">&gt;</button>
-      </div>
-      {/* <button ref={cdiLeftButton} onClick={handleCdiLeft} className="cdi-left">CDI left</button> */}
-      {/* <button ref={cdiRightButton} onClick={handleCdiRight} className="cdi-right">CDI right</button> */}
-      <button 
-        className="heading-mode" 
-        onClick={handleHeadingMode}
-        >HM
-      </button>
-      <div className='hdgbox'>
-        <button ref={bugLeftButton} style={{borderRadius: '25px 5px 5px 25px'}} onClick={handleBugLeft} className="bug-left">&lt;</button>
-        <button onClick={handleBug} style={{borderRadius: '5px'}}  className="hdgbug">HDG</button>
-        <button ref={bugRightButton} style={{borderRadius: '5px 25px 25px 5px'}} onClick={handleBugRight} className="bug-right">&gt;</button>
-      </div>
-    </nav>
-    </>
   )
 }

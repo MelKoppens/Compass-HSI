@@ -266,7 +266,7 @@ function App() {
   }, [aircraftState, instrumentState]);
 
   return (
-    <div>
+    <div className="app">
       <Controls 
         handleTurnLeft = {handleTurnLeft}
         handleTurnLevel = {handleTurnLevel}
