@@ -59,3 +59,5 @@
   /* border: none;  */
   /* text-indent: -9999px; */
 }
+
+// how to deploy the vite built project on GitHub pages
