@@ -39,6 +39,7 @@
   position: relative;
   text-align: center;
   min-width: 520px;
+  max-height: 100vh;
 }
 
 @keyframes moveTopToBottom {
@@ -334,6 +335,25 @@
   
   background-image: url('./assets/TOFROMindicator.svg');
   background-size: cover;
+}
+
+.vor1txt {
+  position: absolute;
+  line-height: 1.3;
+  top: 130px;
+  left: 110px;
+  width: 80px;
+  height: 30px;
+ 
+  /* background-color: black; */
+  /* border-radius: 3px; */
+
+  font-family: "B612", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.5em;
+  z-index: 3;
+  color: #4FA43F;
 }
 
 .bearing {

@@ -4,12 +4,8 @@ html {
 }
 body {
   margin: 0;
-  /* display: flex;
-  align-items: center; 
-  place-items: center; */
   min-width: 720px;
   background-color:aliceblue;
-  /* background-image: url('./assets/A320.jpeg'); */
 }
 
 :root {
@@ -26,11 +22,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
+/* a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
-}
+} */
 
 button {
   margin: 1px;
@@ -39,8 +35,9 @@ button {
   padding: 0.6em 1.2em;
 
   font-size: 1em;
-  font-weight: 500;
+  font-weight: 600;
   font-family: inherit;
+  color: black;
 
   background-color: #4FA43F;
   cursor: pointer;
@@ -49,7 +46,7 @@ button {
 }
 
 button:hover {
-  border-color: #646cff;
+  border-color: aliceblue;
 }
 
 .heading-mode {
