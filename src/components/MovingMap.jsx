@@ -7,15 +7,17 @@ export default function MovingMap(props) {
 
   return (
     <main className="movingmap">
-      <Map className="map"
-        aircraftState = {aircraftState}
-      />
-      <Radial className="radial"
-        aircraftState = {aircraftState}
-        instrumentState = {instrumentState}
-        obsState = {obsState}
-      />
-      <MiniPlane className="mini" />
+      <div className="movingmapElement">
+        <Map className="map"
+          aircraftState = {aircraftState}
+        />
+        <Radial className="radial"
+          aircraftState = {aircraftState}
+          instrumentState = {instrumentState}
+          obsState = {obsState}
+        />
+        <MiniPlane className="mini" />
+      </div>
     </main>
   
   )

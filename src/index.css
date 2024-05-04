@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* background-color: #242424; */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -25,17 +25,8 @@ body {
   align-items: center; 
   place-items: center;
   min-width: 720px;
-  min-height: 100vh;
   background-color:aliceblue;
-  background-image: url('./assets/A320.jpeg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  /* background-image: url('./assets/A320.jpeg'); */
 }
 
 button {
@@ -49,6 +40,7 @@ button {
   background-color: skyblue;
   cursor: pointer;
   transition: border-color 0.25s;
+  z-index: 1;
 }
 
 button:hover {
@@ -66,5 +58,5 @@ button:hover {
 
 .navbar2 {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
 }

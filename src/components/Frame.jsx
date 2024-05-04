@@ -10,15 +10,17 @@ export default function Frame(props) {
   const { aircraftState, instrumentState, bugState, obsState } = props;
   return (
     <main className="framework">
-      <CompassFrame />
-      <Compass />
-      <HeadingTxt aircraftState = {aircraftState}/>
-      <BugTxt bugState = {bugState}/>
-      <CourseTxt obsState = {obsState}/>
-      <BearingTxt 
-        aircraftState = {aircraftState}
-        instrumentState = {instrumentState}
-      />
+      <div className="frameworkElement">
+        <CompassFrame />
+        <Compass />
+        <HeadingTxt aircraftState = {aircraftState}/>
+        <BugTxt bugState = {bugState}/>
+        <CourseTxt obsState = {obsState}/>
+        <BearingTxt 
+          aircraftState = {aircraftState}
+          instrumentState = {instrumentState}
+        />
+      </div>
     </main>
   )
 }
