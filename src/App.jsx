@@ -4,9 +4,10 @@ import Frame from './components/Frame'
 import MovingMap from './components/MovingMap'
 import './App.css'
 
-let FPS = 20; // determines how fast states are updated 
-let TURN_RATE = 3; // determine the turn rate (3 deg/sec is standard in aviation)
-let SPEED = 120; // in KTS
+const FPS = 20; // determines how fast states are updated 
+const TURN_RATE = 3; // determine the turn rate (3 deg/sec is standard in aviation)
+const SPEED = 120; // in KTS
+const ZOOMFACTOR = 1.05; // rate of zooming in/out
 
 function App() {
   const [aircraftState, setAircraftState] = useState({heading: 0, xPos: 0, yPos: 200}); // [0,360], x, y
@@ -16,6 +17,7 @@ function App() {
   const [bugState, setBugState] = useState(0);
   const [turnState, setTurnState] = useState('level'); // 'left' , 'right' , 'level'
   const [headingModeState, setHeadingModeState] = useState('off');
+  const [scaleState, setScaleState] = useState(1);
 
   // handle left turn
   const handleTurnLeft = () => {
@@ -163,6 +165,20 @@ function App() {
     })
   };
 
+  // Zoom in with zoomfactor
+  const handleZoomIn = () => {
+    setScaleState((prevScale) => {
+      return prevScale > 0.01 ? prevScale / ZOOMFACTOR : prevScale;
+    })
+  };
+
+  // Zoom out with zoomfactor
+  const handleZoomOut = () => {
+    setScaleState((prevScale) => {
+      return prevScale < 100 ? prevScale * ZOOMFACTOR : prevScale;
+    })
+  };
+
   // // module to test states
   // useEffect(() => {
   //   console.log(bugState);
@@ -299,6 +315,9 @@ function App() {
         aircraftState = {aircraftState}
         instrumentState = {instrumentState}
         obsState = {obsState}
+        scaleState = {scaleState}
+        handleZoomIn = {handleZoomIn}
+        handleZoomOut = {handleZoomOut}
       />
     </div>
   )
