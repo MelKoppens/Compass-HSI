@@ -1,5 +1,5 @@
-import React, { useRef, useEffect } from 'react';
 import '../App.css'
+import React, { useRef, useEffect } from 'react';
 import  createActionButtonHandler from './helpers/fastclick';
 
 
@@ -90,10 +90,9 @@ export default function Controls(props) {
             >&gt;
           </button>
         </div>
-  
       </nav>
       <nav className='navbar2'>
-        <div className='hdgbox'>
+        <div className='obsbox'>
           <button ref={obsLeftButton} style={{borderRadius: '25px 5px 5px 25px'}} onClick={handleObsLeft} className="obs-left">&lt;</button>
           <button onClick={handleObs} style={{borderRadius: '5px'}} className="obs">OBS</button>
           <button ref={obsRightButton} style={{borderRadius: '5px 25px 25px 5px'}} onClick={handleObsRight} className="obs-right">&gt;</button>
