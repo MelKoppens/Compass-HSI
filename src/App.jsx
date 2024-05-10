@@ -70,6 +70,8 @@ function App() {
       divTurnLeft.style.backgroundColor = 'lightgrey';
       divLevel.style.backgroundColor = 'lightgrey';
       divTurnRight.style.backgroundColor = 'lightgrey';
+      // turn off hover behavior
+      divTurnLeft.classList.add('no-hover');
     } 
     if (headingModeState === 'on') {
       setHeadingModeState('off');
@@ -77,6 +79,8 @@ function App() {
       divTurnLeft.style.backgroundColor = (turnState === 'left') ? '#3F8320' : '#4FA43F';
       divLevel.style.backgroundColor = (turnState === 'level') ? '#3F8320' : '#4FA43F';
       divTurnRight.style.backgroundColor = (turnState === 'right') ? '#3F8320' : '#4FA43F';
+      // turn on hover behavior
+      divTurnLeft.classList.remove('no-hover');
     } 
   };
 
