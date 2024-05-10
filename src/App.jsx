@@ -4,61 +4,120 @@ import Frame from './components/Frame'
 import MovingMap from './components/MovingMap'
 import './App.css'
 
-let FPS = 20; // determines how fast states are updated 
-let TURN_RATE = 3; // determine the turn rate (3 deg/sec is standard in aviation)
-let SPEED = 120; // in KTS
+const FPS = 20; // determines how fast states are updated 
+const TURN_RATE = 3; // determine the turn rate (3 deg/sec is standard in aviation)
+const SPEED = 120; // in KTS
+const ZOOMFACTOR = 1.05; // rate of zooming in/out
 
 function App() {
   const [aircraftState, setAircraftState] = useState({heading: 0, xPos: 0, yPos: 200}); // [0,360], x, y
-  const [instrumentState, setInstrumentState] = useState({bearing: 0, cdi: 0, toFrom: 0}); // [0,360], [-10,10], 'to', 'from'
+  const [instrumentState, setInstrumentState] = useState({bearing: 0, cdi: 0, toFrom: 0}); // [0,360], [-10,10], [0, 180], ['left', 'right']
   const [cdiState, setCdiState] = useState(0);
   const [obsState, setObsState] = useState(0);
   const [bugState, setBugState] = useState(0);
   const [turnState, setTurnState] = useState('level'); // 'left' , 'right' , 'level'
-  const [headingModeState, setHeadingModeState] = useState('off');
+  const [headingModeState, setHeadingModeState] = useState(false);
+  const [scaleState, setScaleState] = useState(1);
+  const [pauseState, setPauseState] = useState(false); // pauses the app
 
   // handle left turn
   const handleTurnLeft = () => {
-    // Set turnState to left
-    setTurnState('left');
+    if (!headingModeState) {
+      // Set turnState to left
+      let divTurnLeft = document.querySelector('.turn-left');
+      let divLevel = document.querySelector('.level');
+      let divTurnRight = document.querySelector('.turn-right');
+      setTurnState('left');
+      divTurnLeft.style.backgroundColor = '#3F8320';
+      divLevel.style.backgroundColor = '#4FA43F';
+      divTurnRight.style.backgroundColor = '#4FA43F';
+    }
   };
 
-  // handle right turn
-  const handleTurnLevel = () => {
-    // Set turnState to left
-    setTurnState('level');
+  // handle level
+  const handleLevel = () => {
+    if (!headingModeState) {
+      // Set turnState to left
+      let divTurnLeft = document.querySelector('.turn-left');
+      let divLevel = document.querySelector('.level');
+      let divTurnRight = document.querySelector('.turn-right');
+      setTurnState('level');
+      divTurnLeft.style.backgroundColor = '#4FA43F';
+      divLevel.style.backgroundColor = '#3F8320';
+      divTurnRight.style.backgroundColor = '#4FA43F';
+    }
   };
 
   // handle right turn
   const handleTurnRight = () => {
-    // Set turnState to left
-    setTurnState('right');
+    if (!headingModeState) {
+      // Set turnState to left
+      let divTurnLeft = document.querySelector('.turn-left');
+      let divLevel = document.querySelector('.level');
+      let divTurnRight = document.querySelector('.turn-right');
+      setTurnState('right');
+      divTurnLeft.style.backgroundColor = '#4FA43F';
+      divLevel.style.backgroundColor = '#4FA43F';
+      divTurnRight.style.backgroundColor = '#3F8320';
+    }
   };
 
   // handle heading mode
   const handleHeadingMode = () => {
     let divHeadingMode = document.querySelector('.heading-mode');
-    let buttons = document.querySelectorAll('.turn');
+    let divTurnLeft = document.querySelector('.turn-left');
+    let divLevel = document.querySelector('.level');
+    let divTurnRight = document.querySelector('.turn-right');
     // Toggle headingMode on/off
-    if (headingModeState === 'off') {
-      setHeadingModeState('on');
-      divHeadingMode.style.backgroundColor = 'DodgerBlue';
-      buttons.forEach(button => {
-        button.style.backgroundColor = 'lightgrey';
-        // turn off hover behavior
-        button.classList.add('no-hover');
-      });
+    if (!headingModeState) {
+      setHeadingModeState(true);
+      divHeadingMode.style.backgroundColor = '#3F8320';
+      divTurnLeft.style.backgroundColor = 'lightgrey';
+      divLevel.style.backgroundColor = 'lightgrey';
+      divTurnRight.style.backgroundColor = 'lightgrey';
+      // turn off hover behavior
+      divTurnLeft.classList.add('no-hover');
+      divLevel.classList.add('no-hover');
+      divTurnRight.classList.add('no-hover');
     } 
-    if (headingModeState === 'on') {
-      setHeadingModeState('off');
-      divHeadingMode.style.backgroundColor = 'skyblue';
-      buttons.forEach(button => {
-        button.style.backgroundColor = 'skyblue';
-        // turn on hover behavior
-        button.classList.remove('no-hover');
-      });
+    if (headingModeState) {
+      setHeadingModeState(false);
+      divHeadingMode.style.backgroundColor = '#4FA43F';
+      divTurnLeft.style.backgroundColor = (turnState === 'left') ? '#3F8320' : '#4FA43F';
+      divLevel.style.backgroundColor = (turnState === 'level') ? '#3F8320' : '#4FA43F';
+      divTurnRight.style.backgroundColor = (turnState === 'right') ? '#3F8320' : '#4FA43F';
+      // turn on hover behavior
+      divTurnLeft.classList.remove('no-hover');
+      divLevel.classList.remove('no-hover');
+      divTurnRight.classList.remove('no-hover');
     } 
   };
+
+    // handle pause
+    const handlePause = () => {
+      let divPause = document.querySelector('.pause');
+      let clouds = [];
+      for (let i = 0; i < 6; i++) {
+        clouds.push(document.querySelector(`.clouds${i}`));
+      }
+      // Toggle pause on/off
+      if (!pauseState) {
+        setPauseState(true);
+        divPause.style.backgroundColor = '#3F8320';
+        divPause.innerHTML = '\u23F5';
+        for (let i = 0; i < 6; i++) {
+          clouds[i].style.animationPlayState = 'paused';
+        }
+      } 
+      if (pauseState) {
+        setPauseState(false);
+        divPause.style.backgroundColor = '#4FA43F';
+        divPause.innerHTML = '\u23F8';
+        for (let i = 0; i < 6; i++) {
+          clouds[i].style.animationPlayState = 'running';
+        }
+      } 
+    };
   
   // handle obs left input
   const handleObsLeft = () => {
@@ -102,12 +161,12 @@ function App() {
     let div = document.querySelector('.cdi');
     setCdiState((prevCdi) => {
       let newCdi;
-      if (prevCdi > -25) {
+      if (prevCdi > -10) {
         newCdi = prevCdi - 1;
       } else {
         newCdi = prevCdi;
       }
-      div.style.left = `${newCdi}%`;
+      div.style.left = `${2.5 * newCdi}%`;
       return newCdi;
     })
   };
@@ -118,12 +177,12 @@ function App() {
     let div = document.querySelector('.cdi');
     setCdiState((prevCdi) => {
       let newCdi;
-      if (prevCdi < 25) {
+      if (prevCdi < 10) {
         newCdi = prevCdi + 1;
       } else {
         newCdi = prevCdi;
       }
-      div.style.left = `${newCdi}%`;
+      div.style.left = `${2.5 * newCdi}%`;
       return newCdi;
     })
   };
@@ -163,6 +222,20 @@ function App() {
     })
   };
 
+  // Zoom in with zoomfactor
+  const handleZoomIn = () => {
+    setScaleState((prevScale) => {
+      return prevScale > 0.01 ? prevScale / ZOOMFACTOR : prevScale;
+    })
+  };
+
+  // Zoom out with zoomfactor
+  const handleZoomOut = () => {
+    setScaleState((prevScale) => {
+      return prevScale < 100 ? prevScale * ZOOMFACTOR : prevScale;
+    })
+  };
+
   // // module to test states
   // useEffect(() => {
   //   console.log(bugState);
@@ -184,7 +257,7 @@ function App() {
         if (newTurn > 180) newTurn -= 360;
 
         // if heading mode is on, do this
-        if (headingModeState === 'on') {
+        if (headingModeState) {
           // this solution still needs work
           if (newTurn > 1.1 * TURN_RATE / FPS) setTurnState('right');
           else if (newTurn < -1.1 * TURN_RATE / FPS) setTurnState('left');
@@ -193,6 +266,7 @@ function App() {
             setTurnState('level');
           } 
         }
+        // update the heading
         if (turnState === 'left') {
           newHeading = prevAircraftState.heading - (TURN_RATE / FPS); // 3 refers to std rate of turn (3deg per sec)
           if (newHeading < 0) newHeading += 360;
@@ -201,19 +275,21 @@ function App() {
           if (newHeading >= 360) newHeading -= 360;
         } else {
           newHeading = prevAircraftState.heading;
-          if (headingModeState === 'on' && Math.abs(newTurn) <= TURN_RATE / FPS) newHeading = bugState;
+          if (headingModeState && Math.abs(newTurn) <= TURN_RATE / FPS) newHeading = bugState;
         }
         comp.style.transform = `rotate(${-newHeading}deg)`;
 
+        // update the position based on 100px = 1NM
         let newXPos = prevAircraftState.xPos + Math.sin(newHeading * Math.PI / 180) * SPEED / ( FPS * 36 );
         let newYPos = prevAircraftState.yPos - Math.cos(newHeading * Math.PI / 180) * SPEED / ( FPS * 36 );
 
+        // return updated aircraft state
         let newAircraftState = {
           heading: newHeading,
           xPos: newXPos,
           yPos: newYPos
         }
-        return newAircraftState;
+        return pauseState ? prevAircraftState : newAircraftState;
       });
 
       // Handle instrument updates (except heading)
@@ -252,12 +328,17 @@ function App() {
         if (inProduct > 0 ) newToFrom = 180; // 'FROM' indication
         divToFrom.style.transform = `rotate(${newToFrom}deg)`;
 
+        // update VOR1 text position based on CDI position
+        let divVor1Txt = document.querySelector('.vor1txt');
+        if (instrumentState.cdi < -1.5) divVor1Txt.style.left = '210px';
+        if (instrumentState.cdi > 1.5) divVor1Txt.style.left = '110px';
+
+        // return updated instrument state
         let newInstrumentState = {
           bearing: newBearing,
           cdi: newCdi,
           toFrom: newToFrom,
         }
-
         return newInstrumentState;  
       });
 
@@ -269,7 +350,7 @@ function App() {
     <div className="app">
       <Controls 
         handleTurnLeft = {handleTurnLeft}
-        handleTurnLevel = {handleTurnLevel}
+        handleLevel = {handleLevel}
         handleTurnRight = {handleTurnRight}
         handleHeadingMode = {handleHeadingMode}
         handleObsLeft = {handleObsLeft}
@@ -280,6 +361,7 @@ function App() {
         handleBugLeft = {handleBugLeft}
         handleBug = {handleBug}
         handleBugRight = {handleBugRight}
+        handlePause = {handlePause}
       />
       <Frame 
         aircraftState = {aircraftState}
@@ -291,6 +373,9 @@ function App() {
         aircraftState = {aircraftState}
         instrumentState = {instrumentState}
         obsState = {obsState}
+        scaleState = {scaleState}
+        handleZoomIn = {handleZoomIn}
+        handleZoomOut = {handleZoomOut}
       />
     </div>
   )

@@ -28,6 +28,7 @@
   font-style: italic;
 }
 
+
 #root {
   margin: 0 auto;
   padding: .5rem;
@@ -36,22 +37,21 @@
 
 .wrapper {
   position: relative;
-  text-align: center; 
-  width: 100vw;
+  text-align: center;
+  min-width: 520px;
+  max-height: 100vh;
 }
 
 @keyframes moveTopToBottom {
   0% {
     top: -100px;
-    /* opacity: 0; */
   }
   100% {
     top: 100vh;
-    /* opacity: 1; */
   }
 }
 
-.clouds1 {
+.clouds0 {
   position: absolute;
   top: -100px;
   left: 10%;
@@ -59,17 +59,17 @@
   width: 115px;
   height: 73px;
   
-  opacity: 1;
   background-image: url('./assets/Cloud.svg');
   background-size: cover;
-  /* background-color: black; */
+  opacity: 1;
+
   animation: moveTopToBottom 30s linear infinite;
   animation-delay: 20s;
  
   z-index: -1;
 }
 
-.clouds2 {
+.clouds1 {
   position: absolute;
   top: -100px;
   left: 20%;
@@ -77,33 +77,34 @@
   width: 115px;
   height: 73px;
   
-  opacity: .5;
   background-image: url('./assets/Cloud.svg');
   background-size: cover;
-  /* background-color: black; */
+  opacity: .5;
+
   animation: moveTopToBottom 60s linear infinite;
+  animation-delay: 0s;
   
   z-index: -1;
 }
 
-.clouds3 {
+.clouds2 {
   position: absolute;
   top: -100px;
   left: 25%;
   transform: translateX(-50%);
   width: 115px;
   height: 73px;
-  opacity: .8;
-  /* transform: scaleX(-1); */
+  
   background-image: url('./assets/Cloud.svg');
   background-size: cover;
-  /* background-color: black; */
+  opacity: .8;
+
   animation: moveTopToBottom 40s linear infinite;
   animation-delay: 10s;
   z-index: -1;
 }
 
-.clouds4 {
+.clouds3 {
   position: absolute;
   top: -100px;
   left: 75%;
@@ -111,17 +112,17 @@
   width: 115px;
   height: 73px;
   
-  opacity: 1;
   background-image: url('./assets/Cloud.svg');
   background-size: cover;
-  /* background-color: black; */
+  opacity: 1;
+
   animation: moveTopToBottom 30s linear infinite;
   animation-delay: 5s;
  
   z-index: -1;
 }
 
-.clouds5 {
+.clouds4 {
   position: absolute;
   top: -100px;
   left: 80%;
@@ -129,48 +130,32 @@
   width: 115px;
   height: 73px;
   
-  opacity: .5;
   background-image: url('./assets/Cloud.svg');
   background-size: cover;
-  /* background-color: black; */
+  opacity: .5;
+ 
   animation: moveTopToBottom 60s linear infinite;
   animation-delay: 15s;
  
   z-index: -1;
 }
 
-.clouds6 {
+.clouds5 {
   position: absolute;
   top: -100px;
   left: 90%;
   transform: translateX(-50%);
   width: 115px;
   height: 73px;
-  opacity: .8;
-  /* transform: scaleX(-1); */
+  
   background-image: url('./assets/Cloud.svg');
   background-size: cover;
-  /* background-color: black; */
+  opacity: .8;
+
   animation: moveTopToBottom 40s linear infinite;
   animation-delay: 25s;
+
   z-index: -1;
-}
-
-/* .clouds {
-  position: absolute;
-  top: 100px;
-  left: 200px;
-  background-color: black;
-} */
-
-.app {
-  /* position: absolute; */
-  /* top: 0px; */
-  /* text-align: center; */
-}
-
-.heading-mode {
-  background-color: skyblue;
 }
 
 .framework {
@@ -217,9 +202,11 @@
   left: 220px;
   width: 80px;
   height: 40px;
+
   background-color: black;
   border: 1px solid white;
   border-radius: 3px;
+
   font-family: "B612", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -234,10 +221,10 @@
   left: 55px;
   width: 105px;
   height: 30px;
-  /* padding: 1px; */
+
   background-color: black;
-  /* border: 1px solid white; */
   border-radius: 3px;
+
   font-family: "B612", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -257,10 +244,10 @@
   left: 360px;
   width: 105px;
   height: 30px;
-  /* padding: 1px; */
+ 
   background-color: black;
-  /* border: 1px solid white; */
   border-radius: 3px;
+
   font-family: "B612", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -281,9 +268,7 @@
   width: 180px;
   height: 60px;
   text-align: left;
-  /* padding: 1px; */
-  /* background-color: black; */
-  /* border: 1px solid white; */
+
   border-radius: 3px;
   font-family: "B612", sans-serif;
   font-weight: 400;
@@ -313,7 +298,7 @@
   width: 100%;
   height: 100%;
   left: 0;
-  /* set HSI */
+
   transform: rotate(0deg);
   z-index: 2;
   overflow: hidden;
@@ -325,7 +310,6 @@
   width: 100%;
   height: 100%;
   left: 0%;
-  
   
   background-image: url('./assets/CRSselector.svg');
   background-size: cover;
@@ -351,6 +335,25 @@
   
   background-image: url('./assets/TOFROMindicator.svg');
   background-size: cover;
+}
+
+.vor1txt {
+  position: absolute;
+  line-height: 1.3;
+  top: 130px;
+  left: 110px;
+  width: 80px;
+  height: 30px;
+ 
+  /* background-color: black; */
+  /* border-radius: 3px; */
+
+  font-family: "B612", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.5em;
+  z-index: 3;
+  color: #4FA43F;
 }
 
 .bearing {
@@ -409,13 +412,21 @@
 .map {
   position: absolute;
   left: 0%;
-  z-index: 1;
+  pointer-events: none;
+}
+
+.vor {
+  position: absolute;
+  left: 0%;
+  z-index: 2;
+  pointer-events: none;
 }
 
 .radial {
   position: absolute;
   left: 0%;
-  z-index: 2;
+  z-index: 3;
+  pointer-events: none;
 }
 
 .miniplane {
@@ -423,5 +434,18 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 4;
+  pointer-events: none;
+}
+
+.zoombox {
+  position: absolute;
+  top: 2%;
+  left: 88%;
+  color: black;
   z-index: 3;
+}
+
+.zoom:hover {
+  border-color: rgb(206, 214, 202);
 }
