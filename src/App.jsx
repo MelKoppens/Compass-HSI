@@ -16,45 +16,50 @@ function App() {
   const [obsState, setObsState] = useState(0);
   const [bugState, setBugState] = useState(0);
   const [turnState, setTurnState] = useState('level'); // 'left' , 'right' , 'level'
-  const [headingModeState, setHeadingModeState] = useState('off');
+  const [headingModeState, setHeadingModeState] = useState(false);
   const [scaleState, setScaleState] = useState(1);
   const [pauseState, setPauseState] = useState(false); // pauses the app
 
   // handle left turn
   const handleTurnLeft = () => {
-    // Set turnState to left
-    let divTurnLeft = document.querySelector('.turn-left');
-    let divLevel = document.querySelector('.level');
-    let divTurnRight = document.querySelector('.turn-right');
-    setTurnState('left');
-    divTurnLeft.style.backgroundColor = '#3F8320';
-    divLevel.style.backgroundColor = '#4FA43F';
-    divTurnRight.style.backgroundColor = '#4FA43F';
+    if (!headingModeState) {
+      // Set turnState to left
+      let divTurnLeft = document.querySelector('.turn-left');
+      let divLevel = document.querySelector('.level');
+      let divTurnRight = document.querySelector('.turn-right');
+      setTurnState('left');
+      divTurnLeft.style.backgroundColor = '#3F8320';
+      divLevel.style.backgroundColor = '#4FA43F';
+      divTurnRight.style.backgroundColor = '#4FA43F';
+    }
   };
 
   // handle level
-  const handleTurnLevel = () => {
-    // Set turnState to left
-    let divTurnLeft = document.querySelector('.turn-left');
-    let divLevel = document.querySelector('.level');
-    let divTurnRight = document.querySelector('.turn-right');
-    setTurnState('level');
-    divTurnLeft.style.backgroundColor = '#4FA43F';
-    divLevel.style.backgroundColor = '#3F8320';
-    divTurnRight.style.backgroundColor = '#4FA43F';
-
+  const handleLevel = () => {
+    if (!headingModeState) {
+      // Set turnState to left
+      let divTurnLeft = document.querySelector('.turn-left');
+      let divLevel = document.querySelector('.level');
+      let divTurnRight = document.querySelector('.turn-right');
+      setTurnState('level');
+      divTurnLeft.style.backgroundColor = '#4FA43F';
+      divLevel.style.backgroundColor = '#3F8320';
+      divTurnRight.style.backgroundColor = '#4FA43F';
+    }
   };
 
   // handle right turn
   const handleTurnRight = () => {
-    // Set turnState to left
-    let divTurnLeft = document.querySelector('.turn-left');
-    let divLevel = document.querySelector('.level');
-    let divTurnRight = document.querySelector('.turn-right');
-    setTurnState('right');
-    divTurnLeft.style.backgroundColor = '#4FA43F';
-    divLevel.style.backgroundColor = '#4FA43F';
-    divTurnRight.style.backgroundColor = '#3F8320';
+    if (!headingModeState) {
+      // Set turnState to left
+      let divTurnLeft = document.querySelector('.turn-left');
+      let divLevel = document.querySelector('.level');
+      let divTurnRight = document.querySelector('.turn-right');
+      setTurnState('right');
+      divTurnLeft.style.backgroundColor = '#4FA43F';
+      divLevel.style.backgroundColor = '#4FA43F';
+      divTurnRight.style.backgroundColor = '#3F8320';
+    }
   };
 
   // handle heading mode
@@ -64,23 +69,27 @@ function App() {
     let divLevel = document.querySelector('.level');
     let divTurnRight = document.querySelector('.turn-right');
     // Toggle headingMode on/off
-    if (headingModeState === 'off') {
-      setHeadingModeState('on');
+    if (!headingModeState) {
+      setHeadingModeState(true);
       divHeadingMode.style.backgroundColor = '#3F8320';
       divTurnLeft.style.backgroundColor = 'lightgrey';
       divLevel.style.backgroundColor = 'lightgrey';
       divTurnRight.style.backgroundColor = 'lightgrey';
       // turn off hover behavior
       divTurnLeft.classList.add('no-hover');
+      divLevel.classList.add('no-hover');
+      divTurnRight.classList.add('no-hover');
     } 
-    if (headingModeState === 'on') {
-      setHeadingModeState('off');
+    if (headingModeState) {
+      setHeadingModeState(false);
       divHeadingMode.style.backgroundColor = '#4FA43F';
       divTurnLeft.style.backgroundColor = (turnState === 'left') ? '#3F8320' : '#4FA43F';
       divLevel.style.backgroundColor = (turnState === 'level') ? '#3F8320' : '#4FA43F';
       divTurnRight.style.backgroundColor = (turnState === 'right') ? '#3F8320' : '#4FA43F';
       // turn on hover behavior
       divTurnLeft.classList.remove('no-hover');
+      divLevel.classList.remove('no-hover');
+      divTurnRight.classList.remove('no-hover');
     } 
   };
 
@@ -248,7 +257,7 @@ function App() {
         if (newTurn > 180) newTurn -= 360;
 
         // if heading mode is on, do this
-        if (headingModeState === 'on') {
+        if (headingModeState) {
           // this solution still needs work
           if (newTurn > 1.1 * TURN_RATE / FPS) setTurnState('right');
           else if (newTurn < -1.1 * TURN_RATE / FPS) setTurnState('left');
@@ -266,7 +275,7 @@ function App() {
           if (newHeading >= 360) newHeading -= 360;
         } else {
           newHeading = prevAircraftState.heading;
-          if (headingModeState === 'on' && Math.abs(newTurn) <= TURN_RATE / FPS) newHeading = bugState;
+          if (headingModeState && Math.abs(newTurn) <= TURN_RATE / FPS) newHeading = bugState;
         }
         comp.style.transform = `rotate(${-newHeading}deg)`;
 
@@ -341,7 +350,7 @@ function App() {
     <div className="app">
       <Controls 
         handleTurnLeft = {handleTurnLeft}
-        handleTurnLevel = {handleTurnLevel}
+        handleLevel = {handleLevel}
         handleTurnRight = {handleTurnRight}
         handleHeadingMode = {handleHeadingMode}
         handleObsLeft = {handleObsLeft}

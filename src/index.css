@@ -1,7 +1,14 @@
+/* a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+} */
+
 html {
   /* display: flex; */
   min-width: 720px;
 }
+
 body {
   margin: 0;
   min-width: 720px;
@@ -21,12 +28,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-/* a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-} */
 
 button {
   margin: 1px;

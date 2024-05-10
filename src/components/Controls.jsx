@@ -6,7 +6,7 @@ import  createActionButtonHandler from './helpers/fastclick';
 export default function Controls(props) {
   const { 
     handleTurnLeft,
-    handleTurnLevel,
+    handleLevel,
     handleTurnRight,
     handleHeadingMode,
     handleObsLeft,
@@ -80,8 +80,8 @@ export default function Controls(props) {
           </button>
           <button 
             className="level"
-            style={{borderRadius: '5px'}} 
-            onClick={handleTurnLevel}
+            style={{borderRadius: '5px', backgroundColor: '#3F8320'}} 
+            onClick={handleLevel}
             >LVL
           </button>
           <button 
@@ -90,19 +90,19 @@ export default function Controls(props) {
             onClick={handleTurnRight}
             >&gt;
           </button>
-          <button 
-            className="pause"
-            style={{width: '55px', borderRadius: '25px 25px 25px 25px'}}
-            onClick={handlePause}
-            >{'\u23F8'}
-          </button>
         </div>
+        <button 
+          className="pause"
+          style={{width: '55px', borderRadius: '25px 25px 25px 25px'}}
+          onClick={handlePause}
+          >{'\u23F8'}
+        </button>
       </nav>
       <nav className='navbar2'>
-        <div className='obsbox'>
-          <button ref={obsLeftButton} style={{borderRadius: '25px 5px 5px 25px'}} onClick={handleObsLeft} className="obs-left">&lt;</button>
-          <button onClick={handleObs} style={{borderRadius: '5px'}} className="obs">OBS</button>
-          <button ref={obsRightButton} style={{borderRadius: '5px 25px 25px 5px'}} onClick={handleObsRight} className="obs-right">&gt;</button>
+        <div className='hdgbox'>
+          <button ref={bugLeftButton} style={{borderRadius: '25px 5px 5px 25px'}} onClick={handleBugLeft} className="bug-left">&lt;</button>
+          <button onClick={handleBug} style={{borderRadius: '5px'}}  className="hdgbug">HDG</button>
+          <button ref={bugRightButton} style={{borderRadius: '5px 25px 25px 5px'}} onClick={handleBugRight} className="bug-right">&gt;</button>
         </div>
         {/* <button ref={cdiLeftButton} onClick={handleCdiLeft} className="cdi-left">CDI left</button> */}
         {/* <button ref={cdiRightButton} onClick={handleCdiRight} className="cdi-right">CDI right</button> */}
@@ -111,10 +111,10 @@ export default function Controls(props) {
           onClick={handleHeadingMode}
           >HM
         </button>
-        <div className='hdgbox'>
-          <button ref={bugLeftButton} style={{borderRadius: '25px 5px 5px 25px'}} onClick={handleBugLeft} className="bug-left">&lt;</button>
-          <button onClick={handleBug} style={{borderRadius: '5px'}}  className="hdgbug">HDG</button>
-          <button ref={bugRightButton} style={{borderRadius: '5px 25px 25px 5px'}} onClick={handleBugRight} className="bug-right">&gt;</button>
+        <div className='obsbox'>
+          <button ref={obsLeftButton} style={{borderRadius: '25px 5px 5px 25px'}} onClick={handleObsLeft} className="obs-left">&lt;</button>
+          <button onClick={handleObs} style={{borderRadius: '5px'}} className="obs">OBS</button>
+          <button ref={obsRightButton} style={{borderRadius: '5px 25px 25px 5px'}} onClick={handleObsRight} className="obs-right">&gt;</button>
         </div>
       </nav>
     </nav>
