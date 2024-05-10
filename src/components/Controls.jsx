@@ -16,7 +16,8 @@ export default function Controls(props) {
     handleCdiRight,
     handleBugLeft,
     handleBug,
-    handleBugRight
+    handleBugRight,
+    handlePause
   } = props;
 
   // fast button for the left OBS button
@@ -72,22 +73,28 @@ export default function Controls(props) {
       <nav className='navbar1'>
         <div className='stearbox'>
           <button 
-            className="turn"
+            className="turn-left"
             style={{borderRadius: '25px 5px 5px 25px'}}
             onClick={handleTurnLeft}
             >&lt;
           </button>
           <button 
-            className="turn"
+            className="level"
             style={{borderRadius: '5px'}} 
             onClick={handleTurnLevel}
             >LVL
           </button>
           <button 
-            className="turn"
+            className="turn-right"
             style={{borderRadius: '5px 25px 25px 5px'}}
             onClick={handleTurnRight}
             >&gt;
+          </button>
+          <button 
+            className="pause"
+            style={{width: '55px', borderRadius: '25px 25px 25px 25px'}}
+            onClick={handlePause}
+            >{'\u23F8'}
           </button>
         </div>
       </nav>

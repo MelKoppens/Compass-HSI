@@ -51,7 +51,7 @@
   }
 }
 
-.clouds1 {
+.clouds0 {
   position: absolute;
   top: -100px;
   left: 10%;
@@ -69,7 +69,7 @@
   z-index: -1;
 }
 
-.clouds2 {
+.clouds1 {
   position: absolute;
   top: -100px;
   left: 20%;
@@ -87,7 +87,7 @@
   z-index: -1;
 }
 
-.clouds3 {
+.clouds2 {
   position: absolute;
   top: -100px;
   left: 25%;
@@ -104,7 +104,7 @@
   z-index: -1;
 }
 
-.clouds4 {
+.clouds3 {
   position: absolute;
   top: -100px;
   left: 75%;
@@ -122,7 +122,7 @@
   z-index: -1;
 }
 
-.clouds5 {
+.clouds4 {
   position: absolute;
   top: -100px;
   left: 80%;
@@ -140,7 +140,7 @@
   z-index: -1;
 }
 
-.clouds6 {
+.clouds5 {
   position: absolute;
   top: -100px;
   left: 90%;
