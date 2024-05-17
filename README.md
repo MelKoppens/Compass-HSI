@@ -1,2 +1,2 @@
 # Compass-HSI
-Simple implementation of an HSI (Horizaontal situation Indicator).
+Simple implementation of an HSI (Horizontal situation Indicator).
