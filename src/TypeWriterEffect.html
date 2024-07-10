@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+<title>Typewriter Effect</title>
+<style>
+  
+  #typewriter-text, #typewriter-textI, #typewriter-textH, #typewriter-textA {
+    overflow: hidden; /* Ensures text doesn't overflow */
+    white-space: nowrap; /* Prevents text from wrapping */
+    display: inline-block; /* Display text inline */
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 5px;
+    height: 1em;
+    transform: translateX(0em);
+    border-right: 1px solid black;
+    background-color: black;
+    animation: blink-caret 0.75s step-end infinite;
+  }
+
+  .vt323-regular {
+  font-family: "VT323", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.button {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+  @keyframes blink-caret {
+    from, to { background-color: transparent; }
+    50% { background-color: black; }
+  }
+</style>
+</head>
+<body>
+
+<!-- <div id="typewriter-text"></div>
+<div class="cursor"></div> -->
+
+<script>
+// Text to be displayed
+const text = "What would you like to practice?";
+const textI = "Intercepts";
+const textH = "Holding";
+const textA = "DME arc";
+
+// Create the typewriter-text div
+let typewriterText = document.createElement('div');
+typewriterText.id = 'typewriter-text';
+let typewriterTextI = document.createElement('div');
+typewriterTextI.id = 'typewriter-textI';
+let typewriterTextH = document.createElement('div');
+typewriterTextH.id = 'typewriter-textH';
+let typewriterTextA = document.createElement('div');
+typewriterTextA.id = 'typewriter-textA';
+
+// Create the cursor div
+let cursor = document.createElement('div');
+cursor.className = 'cursor';
+
+// Append the elements to the body or another container
+document.body.appendChild(typewriterText);
+// document.body.appendChild(cursor);
+document.body.appendChild(document.createElement('br'));
+document.body.appendChild(typewriterTextI);
+document.body.appendChild(document.createElement('br'));
+document.body.appendChild(typewriterTextH);
+document.body.appendChild(document.createElement('br'));
+document.body.appendChild(typewriterTextA);
+
+// Get the element where text will be displayed
+const textElement = document.getElementById('typewriter-text');
+const textElementI = document.getElementById('typewriter-textI');
+const textElementH = document.getElementById('typewriter-textH');
+const textElementA = document.getElementById('typewriter-textA');
+
+function typeWriterEffect(text, element, speed) {
+  let i = 0;
+  const textNode = document.createTextNode('');
+  element.appendChild(textNode);
+
+  // Using setInterval to gradually display each character
+  const intervalId = setInterval(() => {
+    if (i < text.length) {
+      textNode.appendData(text.charAt(i));
+      i++;
+    } else {
+      clearInterval(intervalId); // Stop the interval when all text is displayed
+    }
+  }, speed);
+}
+
+// Call the function with the desired speed (in milliseconds)
+typeWriterEffect(text, textElement, 100); // Adjust speed as needed
+
+setTimeout(() => {
+  // cursor.remove();
+  let buttonI = document.createElement('button');
+  buttonI.id = 'buttonI';
+  buttonI.className = "button";
+  buttonI.addEventListener('click', function() {
+    console.log('testI');
+  });
+  textElementI.appendChild(buttonI);
+  typeWriterEffect(textI, textElementI, 100);
+  // textElementI.appendChild(cursor);
+}, 5000);
+
+setTimeout(() => {
+  // cursor.remove();
+  let buttonH = document.createElement('button');
+  buttonH.id = 'buttonH';
+  buttonH.className = "button";
+  buttonH.addEventListener('click', function() {
+    console.log('testH');
+  });
+  textElementH.appendChild(buttonH);
+  typeWriterEffect(textH, textElementH, 100);
+  // textElementH.appendChild(cursor);
+}, 6500);
+
+setTimeout(() => {
+  // cursor.remove();
+  let buttonA = document.createElement('button');
+  buttonA.id = 'buttonA';
+  buttonA.className = "button";
+  buttonA.addEventListener('click', function() {
+    console.log('testA');
+  });
+  textElementA.appendChild(buttonA);
+  typeWriterEffect(textA, textElementA, 100);
+  // textElementA.appendChild(cursor);
+}, 8000);
+
+</script>
+
+</body>
+</html>

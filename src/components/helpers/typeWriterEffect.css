@@ -1,0 +1,34 @@
+  #typewriter-text, #typewriter-textI, #typewriter-textH, #typewriter-textA {
+    overflow: hidden; /* Ensures text doesn't overflow */
+    white-space: nowrap; /* Prevents text from wrapping */
+    display: inline-block; /* Display text inline */
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 5px;
+    height: 1em;
+    transform: translateX(0em);
+    border-right: 1px solid black;
+    background-color: black;
+    animation: blink-caret 0.75s step-end infinite;
+  }
+
+  .vt323-regular {
+  font-family: "VT323", monospace;
+  font-weight: 400;
+  font-style: normal;
+  }
+
+  .button {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+
+  @keyframes blink-caret {
+    from, to { background-color: transparent; }
+    50% { background-color: black; }
+  }

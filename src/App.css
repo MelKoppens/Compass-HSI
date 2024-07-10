@@ -35,7 +35,7 @@
   width: 100vw;
 }
 
-.wrapper {
+.app {
   position: relative;
   text-align: center;
   min-width: 520px;
@@ -158,12 +158,25 @@
   z-index: -1;
 }
 
-.framework {
+.panel {
   display: flex;
   justify-content: center;
 }
 
-.frameworkElement {
+.left-panel {
+  width: 300px;
+  margin-top: 200px;
+  display: flex;
+  justify-content: left;
+}
+
+.right-panel {
+  width: 300px;
+  display: flex;
+  justify-content: left;
+}
+
+.frame {
   margin-top: 10px;
   position: relative;
   width: 520px;
